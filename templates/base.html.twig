@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet" href="/css/cosmo/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="/css/datatables.min.css"/>
+        <link rel="stylesheet" href="/css/fullcalendar.min.css" />
+        <link rel="stylesheet" href="/css/fullcalendar.print.css" media='print'/>
+        <link rel="stylesheet" href="/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="/css/style.css"/>
+    </head>
+    <body>
+        {{ include('inc/navbar.html.twig') }}
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-12">
+                {{ include('inc/menu.html.twig') }}
+            </div>
+            <div class="col-lg-9">
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+        
+        
+        {{ include('inc/footer.html.twig') }}
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/datatables.min.js"></script>
+        <script src="/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/dt-table.js"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

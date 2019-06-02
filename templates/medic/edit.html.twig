@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Editar Medico {% endblock %}
+
+{% block body %} 
+    <h2 class="mt-2 mb-4">Medicos</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %} 
+
+
+{% block javascripts %}
+<script>
+
+    var medic_group = document.getElementById("form_MedicGroup");
+    var date_end = document.getElementById("form_date_end");
+
+    if(medic_group.value === '9'){
+        date_end.style.display = 'block';
+        document.getElementById("form_date_end").previousSibling.style.display = 'block';
+    }else{
+        date_end.style.display = 'none';
+        document.getElementById("form_date_end").previousSibling.style.display = 'none';
+    }
+
+    medic_group.addEventListener("change", chgGroup);   
+
+    function chgGroup() {
+           
+        if(medic_group.value === '9'){
+            date_end.style.display = 'block';
+            document.getElementById("form_date_end").previousSibling.style.display = 'block';
+        }
+        else{
+            date_end.style.display = 'none';
+            document.getElementById("form_date_end").previousSibling.style.display = 'none';
+        }
+    }
+
+    $('.datepicker').datepicker({
+        //startDate: '-3d'
+    });
+    
+</script>
+{% endblock %}

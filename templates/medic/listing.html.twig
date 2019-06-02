@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listado de Medicos {% endblock %}
+
+{% block body %} 
+   {% if schedules %}
+        <h2 class="mt-2 mb-4">Listado de medicos con sus horarios</h2>
+         <ul class="list-group">
+            {% for schedule in schedules %}
+                    <li class="list-group-item">
+                    <span class="font-weight-bold">Doctor/@ : </span> {{ schedule.name }} {{ schedule.last_name }} 
+                    <span class="font-weight-bold"> | En horario : </span>{{ schedule.schedule.dayone }} 
+
+                    - {{ schedule.schedule.fromhourdayone|date('h:i:a') }} a {{ schedule.schedule.tohourdayone|date('h:i:a') }} 
+                    {{ schedule.schedule.daytwo }} {{ schedule.schedule.fromhourdaytwo|date('h:i:a') }} a {{ schedule.schedule.tohourdaytwo|date('h:i:a') }} 
+                    </li>
+            {% endfor %}
+        </ul>
+   {% else %}
+    <div class="alert alert-dismissible alert-warning">
+        {# <button type="button" class="close" data-dismiss="alert">&times;</button> #}
+        <h4 class="alert-heading">Aviso</h4>
+        <p class="mb-0">No Existen Horarios medicos actualmente atados a un medico</a>.</p>
+    </div>
+   {% endif %}
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/form.css') }}" />
+{% endblock %}
+
+{% block title %} Nuevo Empleado {% endblock %}
+
+{% block body %} 
+    <h2 class="mt-2 mb-4">Nuevo Empleado</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %} 
+
+{% block javascripts %}
+<script>
+    $('.datepicker').datepicker({
+        //startDate: '-3d'
+    });
+</script>
+{% endblock %}

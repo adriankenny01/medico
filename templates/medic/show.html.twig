@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Medico {% endblock %}
+
+{% block body %} 
+<h1 class="mt-4 mb-4">Medico</h1>
+<h2><strong>Nombre Completo: </strong>{{ medic.name}} {{ medic.lastName }}</h2>
+
+<ul class="list-group">
+  <li class="list-group-item"><img src="{{ asset('img/user.svg') }}" width="72px" alt="Perfil"/> </li>
+  <li class="list-group-item"><strong>Direccion: </strong>{{ medic.address }}</li>
+  <li class="list-group-item"><strong>Telefono: </strong>{{ medic.phone }}</li>
+  <li class="list-group-item"><strong>Provincia: </strong>{{ medic.province }}</li>
+  <li class="list-group-item"><strong>Zip_Code: </strong>{{ medic.zipCode }}</li>
+  <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic.group_id }}</li>
+  <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic.dateStart|date('Y-m-d')  }}</li>
+  <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic.dateEnd|date('Y-m-d')  }}</li>
+  <li class="list-group-item"><strong>FOto: </strong>{{ medic.image }}</li>
+  <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category_id }}</li>
+</ul>
+
+<hr>
+<a href="/medic">Volver</a>
+{% endblock %} 

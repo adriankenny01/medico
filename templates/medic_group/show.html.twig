@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Grupo Medico {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Grupo Medico</h2>
+<ul class="list-group">
+  <li class="list-group-item"><strong>Grupo: </strong>{{ group.name}}</li>
+</ul>
+<hr>
+<a href="/group">Volver</a>
+{% endblock %} 

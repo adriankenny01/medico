@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Areas Medicas {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Area medica</h2>
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>Nombre del area: </strong>{{ category.area }}</li>
+</ul>
+<hr>
+<a href="/medic/category">Go Back</a>
+{% endblock %} 

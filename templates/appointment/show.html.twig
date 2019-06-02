@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Cita medica {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Cita Medica</h2>
+<h1>{{ appointment.title}}</h1>
+<p>{{ appointment.symptoms}}</p>
+<p>{{ appointment.medicaments}}</p>
+<p>{{ appointment.sick}}</p>
+
+<hr>
+<a href="/appointment">Go Back</a>
+{% endblock %} 

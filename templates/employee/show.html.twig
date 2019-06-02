@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Empleado {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Nuevo Empleado</h2>
+{# <h1>{{ employee.fullName}}</h1> #}
+
+<ul class="list-group">
+  <li class="list-group-item"><strong>Nombre Completo: </strong>{{ employee.fullName }}</li>
+  <li class="list-group-item"><strong>Cedula: </strong>{{ employee.cardId }} </li>
+  <li class="list-group-item"><strong>Direccion: </strong>{{ employee.address }}</li>
+  <li class="list-group-item"><strong>Telefono: </strong>{{ employee.phone }}</li>
+  <li class="list-group-item"><strong>Provincia: </strong>{{ employee.province }}</li>
+  <li class="list-group-item"><strong>Codigo Postal: </strong>{{ employee.zipCode }}</li>
+  <li class="list-group-item"><strong>Seguridad Social: </strong>{{ employee.socialSecurity }}</li>
+  <li class="list-group-item"><strong>NIF: </strong>{{ employee.nif }}</li>
+  <li class="list-group-item"><strong>Tipo Empleado: </strong>{{ employee.tipoEmpleado }}</li>
+</ul>
+
+<hr>
+<a href="/employee">Volver</a>
+{% endblock %} 

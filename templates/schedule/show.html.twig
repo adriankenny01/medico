@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Horarios {% endblock %}
+
+{% block body %} 
+{% if schedule %}
+<h2 class="mt-2 mb-4">Ver horario</h2>
+<h1>{{ schedule.dayone}} - {{ schedule.daytwo }}</h1>
+<h2>{{ schedule.fromhourdayone|date('h:i:a') }} - {{ schedule.tohourdayone|date('h:i:a') }}</h2>
+<h2>{{ schedule.fromhourdaytwo|date('h:i:a') }} - {{ schedule.tohourdaytwo|date('h:i:a') }}</h2>
+{% endif %}
+<hr>
+<a href="/schedule/">Volver</a>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listar Usuarios {% endblock %}
+
+{% block body %} 
+   {% if users %}
+        <h2 class="mt-2 mb-4">Usuarios</h2>
+        <table class="table table-stripedd data-show" id="users">
+            <thead>
+                <tr>
+                    <th>Nombre Completo</th>
+                    <th>Usuario</th>
+                    <th>Correo</th>
+                    <th>Estado</th>
+                    <th>Actiones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                   <tr>
+                       <td>{{ user.name }}</td>
+                       <td>{{ user.username }}</td>
+                       <td>{{ user.email }}</td>
+                       <td>{{ user.state }}</td>
+                       <td>
+                        <a href="/user/{{ user.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="/user/edit/{{ user.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger delete-article" data-id="{{ user.id }}"><i class="fas fa-trash-alt"></i></a>
+                       </td>
+                       
+                   </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+   {% else %}
+        <p>No existen usuarios registrados</p>
+   {% endif %}
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

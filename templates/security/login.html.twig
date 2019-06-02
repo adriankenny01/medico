@@ -1,0 +1,22 @@
+{% extends 'base.empty.html.twig' %}
+
+{% block title %}Login!{% endblock %}
+
+{% block body %}
+
+    <form action="{{ path('login') }}" method="POST" class="form-signin text-center">
+        <h1 class="mb-4">Login</h1>
+        <img class="mb-4" src="{{ asset('img/user.svg') }}" alt="" width="72" height="72">
+        
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+    
+        <input class="form-control form-control-lg"  type="text" name="_username" value="{{ last_username}}" placeholder="Usuario">
+        <input class="form-control form-control-lg" type="password" name="_password"  placeholder="*****">
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Acceder</button>
+    </form> 
+
+{% endblock %}

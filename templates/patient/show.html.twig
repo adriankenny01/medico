@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Paciente {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Paciente</h2>
+
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"><strong> Nombre Completo:  </strong>{{ patient.fullname}}</li>
+  <li class="list-group-item"><strong> Email:  </strong>{{ patient.email}}</li>
+  <li class="list-group-item"><strong> Cedula:  </strong>{{ patient.cardid}}</li>
+  <li class="list-group-item"><strong> Direccion:  </strong>{{ patient.address}}</li>
+  <li class="list-group-item"><strong> Telefono:  </strong>{{ patient.phone}}</li>
+  <li class="list-group-item"><strong> Codigo Postal:  </strong>{{ patient.zipcode}}</li>
+  <li class="list-group-item"><strong> NIF:  </strong>{{ patient.nif}}</li>
+  <li class="list-group-item"><strong> Seguridad Social:  </strong>{{ patient.socialsecurity}}</li>
+</ul>
+<hr>
+<a href="/patient">Volver atras</a>
+{% endblock %} 

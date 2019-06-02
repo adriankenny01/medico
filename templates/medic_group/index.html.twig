@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listar Grupos de Medicos {% endblock %}
+
+{% block body %} 
+ <a href="/group/new/" class="btn btn-primary float-right mb-3">Nuevo</a>
+   {% if groups %}
+        <h2 class="mt-2 mb-4">Grupo Medico</h2>
+        <table class="table table-striped data-show" id="medic_group">
+            <thead>
+                <tr>
+                    <th>Grupo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for group1 in groups %}
+                   <tr>
+                       <td>{{ group1.name }}</td>
+                       <td>
+                        <a href="/group/{{ group1.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="/group/edit/{{ group1.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger delete-article" data-id="{{ group1.id }}"><i class="fas fa-trash-alt"></i></a>
+                       </td>
+                   </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+   {% else %}
+    <div class="alert alert-dismissible alert-warning">
+        {# <button type="button" class="close" data-dismiss="alert">&times;</button> #}
+        <h4 class="alert-heading">Aviso</h4>
+        <p class="mb-0">No Existen grupos medicos actualmente</a>.</p>
+    </div>
+    <a href="/group/new/" class="btn btn-primary float-right">Nuevo</a>
+   {% endif %}
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}

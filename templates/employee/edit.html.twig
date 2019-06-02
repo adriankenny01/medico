@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Editar Empleado {% endblock %}
+
+{% block body %} 
+    <h2 class="mt-2 mb-4">Nuevo Empleado</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %} 

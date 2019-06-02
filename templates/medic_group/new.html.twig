@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nuevo Grupo Medico {% endblock %}
+
+{% block body %} 
+    <h2 class="mt-2 mb-4">Grupo Medico</h2>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %} 

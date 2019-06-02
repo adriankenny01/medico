@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Listar Horarios {% endblock %}
+
+{% block body %} 
+<h2 class="mt-2 mb-4">Editar horario</h2>
+ 
+   {% if schedules %}
+   <a href="/schedule/new/" class="btn btn-primary float-right">Nuevo</a>
+        <table class="table table-striped data-show" id="schedules">
+            <thead>
+                <tr>
+                    <th>-</th>
+                    <th>-</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                   <tr>
+                       <td>{{ schedule.dayone }} de  {{ schedule.fromhourdayone|date('h:i:a') }} a {{ schedule.tohourdayone|date('h:i:a') }}</td>
+                        <td>{{ schedule.daytwo }} de {{ schedule.fromhourdaytwo|date('h:i:a') }} a {{ schedule.tohourdaytwo|date('h:i:a') }}</td>
+                       <td>{{ schedule.state }}</td>
+                       <td>
+                    <a href="/schedule/{{ schedule.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                        <a href="/schedule/edit/{{ schedule.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="#" class="btn btn-danger delete-article" data-id="{{ schedule.id }}"><i class="fas fa-trash-alt"></i></a>
+                       </td>
+                   </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+   {% else %}
+    <div class="alert alert-dismissible alert-warning">
+        {# <button type="button" class="close" data-dismiss="alert">&times;</button> #}
+        <h4 class="alert-heading">Aviso</h4>
+        <p class="mb-0">No Existen horarios actualmente</a>.</p>
+    </div>
+    <a href="/schedule/new/" class="btn btn-primary float-right">Nuevo</a>
+   {% endif %}
+{% endblock %} 
+
+{% block javascripts %}
+    <script src="/js/main.js"></script>
+{% endblock %}
