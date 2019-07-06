@@ -32,9 +32,20 @@ security:
                 path: /logout
                 target: /
 
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 1000 
+                path:     /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+                token_provider: 'Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider'
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }
+        - { path: ^/user/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+

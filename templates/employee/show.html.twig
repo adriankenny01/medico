@@ -1,23 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Empleado {% endblock %}
+{% block title %} {{ 'Empleado : ' ~ employee.fullname }} {% endblock %}
 
 {% block body %} 
-<h2 class="mt-2 mb-4">Nuevo Empleado</h2>
-{# <h1>{{ employee.fullName}}</h1> #}
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            {{ 'Empleado : ' ~ employee.fullname }}
+                        </h4>
+                        <p class="card-category">
+                            Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if employee %}
 
-<ul class="list-group">
-  <li class="list-group-item"><strong>Nombre Completo: </strong>{{ employee.fullName }}</li>
-  <li class="list-group-item"><strong>Cedula: </strong>{{ employee.cardId }} </li>
-  <li class="list-group-item"><strong>Direccion: </strong>{{ employee.address }}</li>
-  <li class="list-group-item"><strong>Telefono: </strong>{{ employee.phone }}</li>
-  <li class="list-group-item"><strong>Provincia: </strong>{{ employee.province }}</li>
-  <li class="list-group-item"><strong>Codigo Postal: </strong>{{ employee.zipCode }}</li>
-  <li class="list-group-item"><strong>Seguridad Social: </strong>{{ employee.socialSecurity }}</li>
-  <li class="list-group-item"><strong>NIF: </strong>{{ employee.nif }}</li>
-  <li class="list-group-item"><strong>Tipo Empleado: </strong>{{ employee.tipoEmpleado }}</li>
-</ul>
+                                <ul class="list-group">
+                                 <li class="list-group-item"><strong>Nombre Completo: </strong>{{ employee.fullName }}</li>
+                                <li class="list-group-item"><strong>Cedula: </strong>{{ employee.cardId }} </li>
+                                <li class="list-group-item"><strong>Direccion: </strong>{{ employee.address }}</li>
+                                <li class="list-group-item"><strong>Telefono: </strong>{{ employee.phone }}</li>
+                                <li class="list-group-item"><strong>Provincia: </strong>{{ employee.province }}</li>
+                                <li class="list-group-item"><strong>Codigo Postal: </strong>{{ employee.zipCode }}</li>
+                                <li class="list-group-item"><strong>Seguridad Social: </strong>{{ employee.socialSecurity }}</li>
+                                {# <li class="list-group-item"><strong>NIF: </strong>{{ employee.nif }}</li> #}
+                                <li class="list-group-item"><strong>Tipo Empleado: </strong>{{ employee.tipoEmpleado }}</li>
+                                </ul>
+                                <a class="btn float-right" href="/employee">Volver</a>  
 
-<hr>
-<a href="/employee">Volver</a>
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existen Usuarios actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %} 

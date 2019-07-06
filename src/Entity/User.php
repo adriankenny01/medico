@@ -100,7 +100,12 @@ class User implements UserInterface, \Serializable
 
     public function getRoles(){
         return [
-            'ROLE_USER'
+            'ROLE_USER',
+            'ROLE_PATIENT',
+            'ROLE_EMPLOYEE',
+            'ROLE_MEDIC',
+            'ROLE_APPOINTMENTS',
+            'ROLE_SCHEDULES',
         ];
     }
 

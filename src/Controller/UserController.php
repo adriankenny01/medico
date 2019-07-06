@@ -31,7 +31,6 @@ class UserController extends Controller{
      * 
      */
     public function index(){
-        // return new Response('<h2>Just a test</h2>'); 
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
 
         return $this->render('users/index.html.twig' , array
@@ -48,8 +47,13 @@ class UserController extends Controller{
         $user = new User($this->encoder);
 
         $form = $this->createFormBuilder($user)
-            ->add('name', TextType::class, array('attr' =>
-            array('class' => 'form-control'), 'label' => 'Nombre'))
+            ->add('name', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control', 
+                    'placeholder' => 'Nombre',
+                    
+                ) ,'label' => false
+            ))
             ->add('username', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Usuario'))
             ->add('email', EmailType::class, array('attr' =>

@@ -62,11 +62,11 @@ class Employee
 
     private $zip_code;
 
-     /**
-     * @ORM\Column(type="integer")
-    */
+    //  /**
+    //  * @ORM\Column(type="integer")
+    // */
 
-    private $nif;
+    // private $nif;
 
     /**
      * @ORM\Column(type="integer")
@@ -75,7 +75,7 @@ class Employee
     private $social_security;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="date")
     */
 
     private $date_start;
@@ -151,15 +151,15 @@ class Employee
         $this->province = $province;
     }
 
-    public function getNif()
-    {
-        return $this->nif;
-    }
+    // public function getNif()
+    // {
+    //     return $this->nif;
+    // }
 
-    public function setNif($nif)
-    {
-        $this->nif = $nif;
-    }
+    // public function setNif($nif)
+    // {
+    //     $this->nif = $nif;
+    // }
 
     public function getZipCode()
     {

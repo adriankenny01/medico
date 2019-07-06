@@ -1,14 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Horarios {% endblock %}
+{% block title %}
+    Horario
+{% endblock %}
 
-{% block body %} 
-{% if schedule %}
-<h2 class="mt-2 mb-4">Ver horario</h2>
-<h1>{{ schedule.dayone}} - {{ schedule.daytwo }}</h1>
-<h2>{{ schedule.fromhourdayone|date('h:i:a') }} - {{ schedule.tohourdayone|date('h:i:a') }}</h2>
-<h2>{{ schedule.fromhourdaytwo|date('h:i:a') }} - {{ schedule.tohourdaytwo|date('h:i:a') }}</h2>
-{% endif %}
-<hr>
-<a href="/schedule/">Volver</a>
+{% block body %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            Horarios
+                        </h4>
+                        <p class="card-category">
+                            Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if schedule %}
+
+                                <h1>{{ schedule.dayone}}
+                                    -
+                                    {{ schedule.daytwo }}</h1>
+                                <h2>{{ schedule.fromhourdayone|date('h:i:a') }}
+                                    -
+                                    {{ schedule.tohourdayone|date('h:i:a') }}</h2>
+                                <h2>{{ schedule.fromhourdaytwo|date('h:i:a') }}
+                                    -
+                                    {{ schedule.tohourdaytwo|date('h:i:a') }}</h2>
+
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existen horarios actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="/schedule/">Volver</a>
 {% endblock %}

@@ -13,6 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -48,17 +49,18 @@ class EmployeeController extends Controller
             array('class' => 'form-control'), 'label' => 'Cedula'))
             ->add('address', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Direccion'))
-            ->add('phone', TelType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Telefono'))
+            ->add('phone', TelType::class, 
+            array( 'attr' =>
+            array('placeholder' => '_ _ _ . _ _ _ . _ _ _ _','class' => 'form-control'),'label' => 'Telefono' ))
             ->add('province', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Provincia'))
             ->add('zip_code', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Codigo Postal'))
-            ->add('nif', IntegerType::class, array('attr' =>
-            array('class' => 'form-control')))
+            // ->add('nif', IntegerType::class, array('attr' =>
+            // array('class' => 'form-control')))
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
-            ->add('date_start', TextType::class, array('attr' =>
+            ->add('date_start', DateType::class, array('widget' => 'single_text','attr' =>
             array('class' => 'form-control datepicker'),'label' => 'Fecha Inicio'))
             ->add('tipo_empleado', ChoiceType::class, [
                 'choices' => ['Auxiliares de enfermería' => 'Auxiliares de enfermería', 
@@ -71,7 +73,7 @@ class EmployeeController extends Controller
 
             ->add('save', SubmitType::class, array(
                 'label' => 'Crear', 
-                'attr'  => array('class' => 'btn btn-primary mt-3')
+                'attr'  => array('class' => 'btn btn-primary btn-round mt-3')
             ))
             ->getForm();
 
@@ -116,8 +118,8 @@ class EmployeeController extends Controller
         array('class' => 'form-control'),'label' => 'Provincia'))
         ->add('zip_code', IntegerType::class, array('attr' =>
         array('class' => 'form-control'),'label' => 'Codigo Postal'))
-        ->add('nif', IntegerType::class, array('attr' =>
-        array('class' => 'form-control')))
+        // ->add('nif', IntegerType::class, array('attr' =>
+        // array('class' => 'form-control')))
         ->add('social_security', IntegerType::class, array('attr' =>
         array('class' => 'form-control'),'label' => 'Seguridad Social'))
         ->add('tipo_empleado', ChoiceType::class, [

@@ -9,3 +9,7 @@
 #form_date_end {
     display: none;
 }
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.9rem + 2.1px);
+}

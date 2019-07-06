@@ -1,14 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Sistema Medico {% endblock %}
+{% block title %} {{ 'Usuario' ~   user.name }} {% endblock %}
 
 {% block body %} 
-<ul class="list-group">
-  <li class="list-group-item"><strong>Nombre: </strong>{{ user.name}}</li>
-  <li class="list-group-item"><strong>Usuario: </strong>{{ user.username }}</li>
-  <li class="list-group-item"><strong>Email: </strong>{{ user.email }}</li>
-  {# <li class="list-group-item"><strong>Contrasena: </strong>{{ user.password }}</li> #}
-</ul>
-<hr>
-<a href="/user">Volver</a>
+
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            Usuarios
+                        </h4>
+                        <p class="card-category">
+                            Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if user %}
+
+                                <ul class="list-group">
+                                  <li class="list-group-item"><strong>Nombre: </strong>{{ user.name}}</li>
+                                  <li class="list-group-item"><strong>Usuario: </strong>{{ user.username }}</li>
+                                  <li class="list-group-item"><strong>Email: </strong>{{ user.email }}</li>
+                                </ul>
+                                <a class="btn float-right" href="/user">Volver</a>  
+
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existen Usuarios actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/schedule/new/">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %} 

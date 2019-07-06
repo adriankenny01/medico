@@ -3,8 +3,23 @@
 {% block title %} Editar horario {% endblock %}
 
 {% block body %} 
-    <h2 class="mt-2 mb-4">Editar horario</h2>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    
+    <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Editar Horario </h4>
+                <p class="card-category"> Here is a subtitle for this table</p>
+                <a href="/schedule/new/" class="btn btn-primary float-right">Nuevo</a>
+              </div>
+                <div class="p-3">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
 {% endblock %} 

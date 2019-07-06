@@ -101,10 +101,10 @@ class ScheduleController extends Controller
             ])
 
             
-            ->add('save', SubmitType::class, array(
-                'label' => 'Crear', 
-                'attr'  => array('class' => 'btn btn-primary mt-3')
-            ))
+            // ->add('save', SubmitType::class, array(
+            //     'label' => 'Crear', 
+            //     'attr'  => array('class' => 'btn btn-primary mt-3')
+            // ))
             ->getForm();
 
             $form->handleRequest($request);
