@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+        <!-- Favicon --> 
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('paper/assets/img/brand/favicon.png') }}">
         <link rel="icon" type="image/png" href="{{ asset('/assets/img/favicon.png') }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
@@ -10,11 +11,9 @@
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         {% block stylesheets %}{% endblock %}
-        <!-- Favicon -->
-        <link href="{{ asset('paper/assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
         <!-- Fonts and Icons-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" rel="stylesheet">
         <!-- CSS Files -->
         <link href="{{ asset('/paper/assets/css/bootstrap.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('/paper/assets/css/paper-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
@@ -23,6 +22,9 @@
 
         <!-- My style -->
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet" />
+
+        <!-- datatables -->
+       <link href="{{ asset('/css/datatables.min.css') }}" rel="stylesheet" />
 
         <script src="{{ asset('js/moment.min.js') }}"></script>
         <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -61,9 +63,9 @@
         <!--   Core JS Files   -->
         <script src="{{ asset('paper/assets/js/core/popper.min.js') }}"></script>
         <script src="{{ asset('paper/assets/js/core/bootstrap.min.js') }}"></script>
-        <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+        <script src="{{ asset('paper/assets/js/plugins/perfect-scrollbar.jquery.min.js') }}"></script>
         <!--  Google Maps Plugin    -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+        {# <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> #}
         <!-- Chart JS -->
         <script src="{{ asset('paper/assets/js/plugins/chartjs.min.js') }}"></script>
         <!--  Notifications Plugin    -->
@@ -73,7 +75,8 @@
         <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
         {# <!-- <script src="{{ asset('paper/assets/demo/demo.js') }}"></script> --> #}
         {# datatable load #}
-        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/b-1.5.4/b-html5-1.5.4/r-2.2.2/datatables.min.js"></script>
+        <script type="text/javascript" src="{{ asset('js/datatables.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/dt-table.js') }}"></script>
         <script>
             $(document).ready(function() {
             // Javascript method's body can be found in assets/assets-for-demo/js/demo.js

@@ -42,7 +42,7 @@
                     <p>Citas</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'dashbuser_listoard' ? 'active': (app.request.get('_route')) == 'new_user' ? 'active' : (app.request.get('_route')) == 'update_user' ? 'active' : (app.request.get('_route')) == 'user_show' ? 'active' }}">
+            <li class="{{ app.request.get('_route') == 'user_list' ? 'active': (app.request.get('_route')) == 'new_user' ? 'active' : (app.request.get('_route')) == 'update_user' ? 'active' : (app.request.get('_route')) == 'user_show' ? 'active' }}">
                 <a href="{{ path('user_list') }}">
                     <i class="nc-icon nc-single-02"></i>
                     <p>Usuarios</p>
@@ -60,14 +60,14 @@
                     <p>Horario Medico</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'user_list' ? 'active' }}">
-                <a href="{{ path('user_list') }}">
+            <li class="{{ app.request.get('_route') == 'category_list' ? 'active' : (app.request.get('_route')) == 'new_category' ? 'active' : (app.request.get('_route')) == 'category_show' ? 'active' : (app.request.get('_route')) == 'update_category' ? 'active' }}">
+                <a href="{{ path('category_list') }}">
                     <i class="nc-icon nc-caps-small"></i>
                     <p>Area</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'category_list' ? 'active' }}">
-                <a href="{{ path('category_list') }}">
+            <li class="{{ app.request.get('_route') == 'group_list' ? 'active' }}">
+                <a href="{{ path('group_list') }}">
                     <i class="nc-icon nc-caps-small"></i>
                     <p>Grupo Medico</p>
                 </a>

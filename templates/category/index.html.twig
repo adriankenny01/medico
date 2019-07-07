@@ -1,66 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Listar Areas Medicas {% endblock %}
+{% block title %} Area Medica {% endblock %}
 
 {% block body %} 
-<h2 class="mt-2 mb-4">Area medica</h2>
- <a href="/medic/category/new/" class="btn btn-primary float-right mb-3">Nuevo</a>
-   {% if categories %}
 
-    <div class="modal" id="delete-category">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title">Eliminar</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <p>Estas seguro?</p>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="del-cat">Si</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-        </div>
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        Areas Medicas
+                    </h4>
+                    <p class="card-category">
+                        Here is a subtitle for this table</p>
+                    <a class="btn btn-primary float-right" href="/medic/category/new/">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if categories %}
+
+                            <table class="table data-show" id="categories">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th>Area</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for category in categories %}
+                                        <tr>
+                                            <td>{{ category.area }}</td>
+                                            <td>{{ category.state }}</td>
+                                            <td>
+                                                <a href="/medic/category/{{ category.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                                                <a href="/medic/category/edit/{{ category.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                                <a href="#" data-toggle="modal" data-target="#delete-category" class="btn btn-danger delete-article" data-id="{{ category.id }}"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
+                                        </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen areas medicas actualmente.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
+</div>
 
-    {# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#delete-category">
-    Launch demo modal
-    </button> #}
-
-        <table class="table table-striped data-show" id="categories">
-            <thead>
-                <tr>
-                    <th>Area</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for category in categories %}
-                   <tr>
-                       <td>{{ category.area }}</td>
-                       <td>{{ category.state }}</td>
-                       <td>
-                        <a href="/medic/category/{{ category.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                        <a href="/medic/category/edit/{{ category.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
-                        <a href="#" data-toggle="modal" data-target="#delete-category" class="btn btn-danger delete-article" data-id="{{ category.id }}"><i class="fas fa-trash-alt"></i></a>
-                       </td>
-                   </tr> 
-                {% endfor %}
-            </tbody>
-        </table>
-   {% else %}
-    <div class="alert alert-dismissible alert-warning">
-        {# <button type="button" class="close" data-dismiss="alert">&times;</button> #}
-        <h4 class="alert-heading">Aviso</h4>
-        <p class="mb-0">No Existen areas medicas actualmente</a>.</p>
-    </div>
-    <a href="/medic/category/new/" class="btn btn-primary float-right">Nuevo</a>
-   {% endif %}
 {% endblock %} 
 
 {% block javascripts %}

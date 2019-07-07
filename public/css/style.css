@@ -13,3 +13,10 @@
 select.form-control:not([size]):not([multiple]) {
     height: calc(2.9rem + 2.1px);
 }
+
+/* hide scrollbar responsive */
+@media (min-width: 454px) {
+    .table-responsive {
+        overflow:hidden;
+    }
+  }
