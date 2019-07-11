@@ -49,16 +49,10 @@ class Patient
     private $phone;
 
     /**
-     * @ORM\Column(type="integer" ,length=10)
-     */
+     * @ORM\Column(type="text")
+    */
     
-    private $zip_code;
-
-    /**
-     * @ORM\Column(type="integer" ,length=10)
-     */
-    
-    private $nif;
+    private $photo;
 
     /**
      * @ORM\Column(type="integer" ,length=10)
@@ -150,6 +144,16 @@ class Patient
     public function setPhone($phone)
     {
         $this->phone = $phone;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
     }
 
     public function getZipCode()

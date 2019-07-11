@@ -20,3 +20,15 @@ select.form-control:not([size]):not([multiple]) {
         overflow:hidden;
     }
   }
+
+
+/* big icon  */
+.fa-b {
+    font-size: 64px;
+}
+
+/* change placeholder color */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #DDDDDD;
+    opacity: 1; /* Firefox */
+  }

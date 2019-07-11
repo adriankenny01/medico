@@ -76,8 +76,12 @@ class MedicController extends Controller
             ])
 
             ->add('date_start', TextType::class, array(
-                'attr' => array('class' => 'form-control datepicker'),
-                'label' => 'Fecha Inicio'
+                'attr' => array(
+                    'class' => 'form-control',
+                    'widget' => 'single_text'
+                ),
+                'label' => 'Fecha Inicio',
+                
             ))
             ->add('date_end', TextType::class, array(
                 'attr' => array('class' => 'form-control datepicker'),
@@ -315,9 +319,7 @@ class MedicController extends Controller
             return $queryDaysTaken;
         }
     }
-
-
-
+    
     public function EntityCollectionToArrayCollection($collection) {
         
         $serialize = [];

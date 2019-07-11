@@ -30,6 +30,12 @@
                     <p>Empleados</p> 
                 </a>
             </li>
+            <li class="{{ app.request.get('_route') == 'medic_list' ? 'active' : (app.request.get('_route')) == 'new_medic' ? 'active' : (app.request.get('_route')) == 'update_medic' ? 'active' : (app.request.get('_route')) == 'medic_show' ? 'active' : (app.request.get('_route')) == 'medic_schedule' ? 'active' : (app.request.get('_route')) == 'medic_vacation' ? 'active'  }}">
+                <a href="{{ path('medic_list') }}">
+                    <i class="nc-icon nc-diamond"></i>
+                    <p>Médicos</p> 
+                </a>
+            </li>
             <li class="{{ app.request.get('_route') == 'patient_list' ? 'active' }}">
                 <a href="{{ path('patient_list') }}">
                     <i class="nc-icon nc-pin-3"></i>
@@ -66,7 +72,7 @@
                     <p>Area</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'group_list' ? 'active' }}">
+            <li class="{{ app.request.get('_route') == 'group_list' ? 'active' : (app.request.get('_route')) == 'new_group' ? 'active' : (app.request.get('_route')) == 'update_group' ? 'active' }}">
                 <a href="{{ path('group_list') }}">
                     <i class="nc-icon nc-caps-small"></i>
                     <p>Grupo Medico</p>

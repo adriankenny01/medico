@@ -49,10 +49,6 @@ class PatientController extends Controller
             array('class' => 'form-control'),'label' => 'Direccion'))
             ->add('phone', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Telefono'))
-            ->add('zip_code', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Zip Code'))
-            ->add('nif', IntegerType::class, array('attr' =>
-            array('class' => 'form-control')))
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             
@@ -90,6 +86,9 @@ class PatientController extends Controller
 
         $patient = $this->getDoctrine()->getRepository(Patient::class)->find($id);
 
+        var_dump($patient);die;
+        
+
         $form = $this->createFormBuilder($patient)
             ->add('full_name', TextType::class, array('attr' =>
             array('class' => 'form-control'), 'label' => 'Nombre Completo'))
@@ -101,10 +100,6 @@ class PatientController extends Controller
             array('class' => 'form-control'),'label' => 'Direccion'))
             ->add('phone', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Telefono'))
-            ->add('zip_code', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Zip Code'))
-            ->add('nif', IntegerType::class, array('attr' =>
-            array('class' => 'form-control')))
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
 
@@ -125,7 +120,8 @@ class PatientController extends Controller
             }
 
             return $this->render('patient/edit.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                // 'full_name' => 
             ));
     }
 

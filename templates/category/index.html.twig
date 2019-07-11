@@ -24,6 +24,7 @@
                                     <thead class=" text-primary">
                                         <tr>
                                             <th>Area</th>
+                                            <th>Icono</th>
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
@@ -32,6 +33,7 @@
                                         {% for category in categories %}
                                         <tr>
                                             <td>{{ category.area }}</td>
+                                            <td><i class="{{ category.icon }}" ></i></td>
                                             <td>{{ category.state }}</td>
                                             <td>
                                                 <a href="/medic/category/{{ category.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>

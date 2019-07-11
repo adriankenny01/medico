@@ -27,6 +27,11 @@ class Category
     private $area;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    public $icon;
+
+    /**
      * @ORM\Column(type="integer" ,length=1)
      */
     
@@ -70,6 +75,16 @@ class Category
     public function setArea($area)
     {
         $this->area = $area;
+    }
+
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
     }
 
     public function getState() {

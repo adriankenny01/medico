@@ -38,8 +38,16 @@ class CategoryController extends Controller
 
         $form = $this->createFormBuilder($category)
             ->add('area', TextType::class, array(
-                'label' => 'Area',
+                'label' => 'Área',
                 'attr'  => array('class'  => 'form-control') 
+            ))
+
+            ->add('icon', TextType::class, array(
+                'label' => 'Icon (código del icono)',
+                'attr'  => array(
+                    'class'  => 'form-control',
+                    'placehoder'=> 'código del icono'
+                    ) 
             ))
            
             ->add('save', SubmitType::class, array(
@@ -82,6 +90,14 @@ class CategoryController extends Controller
                 'attr'  => array('class'  => 'form-control') 
             ))
 
+            ->add('icon', TextType::class, array(
+                'label' => 'Icon (código del icono)',
+                'attr'  => array(
+                    'class'  => 'form-control',
+                    'placehoder'=> 'código del icono'
+                    ) 
+            ))
+
             ->add('save', SubmitType::class, array(
                 'label' => 'Actualizar', 
                 'attr'  => array('class' => 'btn btn-primary mt-3')
@@ -99,7 +115,8 @@ class CategoryController extends Controller
             }
 
             return $this->render('category/edit.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'icon'  => $category->icon
             ));
     }
 
