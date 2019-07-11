@@ -35,17 +35,9 @@
                                         <th>Apellido</th>
                                         <th>Direccion</th>
                                         <th>Telefono</th>
-                                        <th>Provincia</th>
-                                        {# <th>NIF</th> #}
-                                        {# <th>Social Security</th> #}
-                                        {# <th>Numero de colegiado</th> #}
-                                        <th>Grupo Medico</th>
-                                        {# <th>Dias de Consulta</th> #}
-                                        <th>Fecha Inicio</th>
-                                        {# <th>Fecha Fin</th> #}
-                                        {# <th>Foto</th> #}
+                                         <th>Grupo Medico</th>
                                         <th>Especialidad</th>
-                                        {# <th>Estado</th> #}
+                                        {# <th>Fecha Inicio</th> #}
                                         <th>Ver</th>
                                         <th>Editar</th>
                                         <th>Eliminar</th>
@@ -59,17 +51,9 @@
                                         <td>{{ medic.last_name }}</td>
                                         <td>{{ medic.address }}</td>
                                         <td>{{ medic.phone }}</td>
-                                        <td>{{ medic.province }}</td>
-                                        {# <td>{{ medic.nif }}</td> #}
-                                        {# <td>{{ medic.social_security }}</td> #}
-                                        {# <td>{{ medic.number_of_collegiate }}</td> #}
                                         <td>{{ medic.medic_group }}</td>
-                                        {# <td>{{ medic.days_of_consulting }}</td> #}
-                                        <td>{{ medic.date_start|date('Y-m-d')  }}</td>
-                                        {# <td>{{ medic.date_end|date('Y-m-d')  }}</td> #}
-                                        {# <td>{{ medic.image }}</td> #}
+                                        {# <td>{{ medic.date_start|date('Y-m-d')  }}</td> #}
                                         <td>{{ medic.category }}</td>
-                                        {# <td>{{ medic.state }}</td> #}
                                         
                                         <td>
                                             <a href="/medic/{{ medic.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>

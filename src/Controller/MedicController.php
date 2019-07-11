@@ -57,10 +57,10 @@ class MedicController extends Controller
             array('class' => 'form-control'), 'label' => 'Telefono'))
             ->add('province', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Provincia'))
-            ->add('zip_code', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'zip_code'))
-            ->add('nif', IntegerType::class, array('attr' =>
-            array('class' => 'form-control')))
+            ->add('card_id', IntegerType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Cédula'))
+            ->add('image', TextType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Foto'))
             ->add('social_security', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             ->add('number_of_collegiate', TextType::class, array('attr' =>
@@ -155,10 +155,10 @@ class MedicController extends Controller
             array('class' => 'form-control'), 'label' => 'Telefono'))
             ->add('province', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Provincia'))
-            ->add('zip_code', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'zip_code'))
-            ->add('nif', IntegerType::class, array('attr' =>
-            array('class' => 'form-control')))
+            ->add('card_id', IntegerType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Cédula'))
+            ->add('image', TextType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Foto'))
             ->add('social_security', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             ->add('number_of_collegiate', TextType::class, array('attr' =>

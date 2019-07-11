@@ -38,6 +38,12 @@ class Employee
 
     private $card_id;
 
+     /**
+     * @ORM\Column(type="string", length=100)
+    */
+
+    private $image;
+
     /**
      * @ORM\Column(type="text", length=200)
     */
@@ -55,18 +61,6 @@ class Employee
     */
 
     private $province;
-
-    /**
-     * @ORM\Column(type="integer")
-    */
-
-    private $zip_code;
-
-    //  /**
-    //  * @ORM\Column(type="integer")
-    // */
-
-    // private $nif;
 
     /**
      * @ORM\Column(type="integer")
@@ -114,6 +108,16 @@ class Employee
         $this->card_id = $card_id;
     }
 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
     public function getAddress()
     {
         return $this->address;
@@ -149,26 +153,6 @@ class Employee
     public function setProvince($province)
     {
         $this->province = $province;
-    }
-
-    // public function getNif()
-    // {
-    //     return $this->nif;
-    // }
-
-    // public function setNif($nif)
-    // {
-    //     $this->nif = $nif;
-    // }
-
-    public function getZipCode()
-    {
-        return $this->zip_code;
-    }
-
-    public function setZipCode($zip_code)
-    {
-        $this->zip_code = $zip_code;
     }
 
     public function getSocialSecurity()

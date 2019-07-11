@@ -46,24 +46,18 @@ class Medic
      */
     
     private $phone;
-
-     /**
+    
+    /**
      * @ORM\Column(type="text")
      */
     
     private $province;
 
      /**
-     * @ORM\Column(type="integer" ,length=1)
+     * @ORM\Column(type="string", length=50)
      */
     
-    private $zip_code;
-
-     /**
-     * @ORM\Column(type="integer" ,length=1)
-     */
-    
-    private $nif;
+    private $card_id;
 
      /**
      * @ORM\Column(type="integer" ,length=1)
@@ -147,7 +141,7 @@ class Medic
     private $state;
 
     /**
-     * @ORM\Column(type="text" ,length=1)
+     * @ORM\Column(type="string" ,length=100)
      */
     
     private $image;
@@ -247,24 +241,14 @@ class Medic
         $this->province = $province;
     }
 
-    public function getZipCode()
+    public function getCardId()
     {
-        return $this->zip_code;
+        return $this->card_id;
     }
 
-    public function setZipCode($zip_code)
+    public function setCardId($card_id)
     {
-        $this->zip_code = $zip_code;
-    }
-
-    public function getNif()
-    {
-        return $this->nif;
-    }
-
-    public function setNif($nif)
-    {
-        $this->nif = $nif;
+        $this->card_id = $card_id;
     }
 
     public function getSocialSecurity()
@@ -367,7 +351,7 @@ class Medic
            'address' => $this->getAddress(),
            'phone' => $this->getPhone(),
            'province' => $this->getProvince(),
-           'zip_code'  => $this->getZipCode(),
+           'card_id'  => $this->getCardId(),
            'date_start' => $this->getDateStart(),
            'date_end' => $this->getDateEnd(),
            'image' => $this->getImage(),

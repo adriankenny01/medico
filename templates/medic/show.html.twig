@@ -1,24 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Medico {% endblock %}
+{% block title %} {{ medic.name}} {{ medic.lastName }} {% endblock %}
 
 {% block body %} 
-<h1 class="mt-4 mb-4">Medico</h1>
-<h2><strong>Nombre Completo: </strong>{{ medic.name}} {{ medic.lastName }}</h2>
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            {{ medic.name}} {{ medic.lastName }}
+                        </h4>
+                        <p class="card-category">
+                            Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if medic %}
 
-<ul class="list-group">
-  <li class="list-group-item"><img src="{{ asset('img/user.svg') }}" width="72px" alt="Perfil"/> </li>
-  <li class="list-group-item"><strong>Direccion: </strong>{{ medic.address }}</li>
-  <li class="list-group-item"><strong>Telefono: </strong>{{ medic.phone }}</li>
-  <li class="list-group-item"><strong>Provincia: </strong>{{ medic.province }}</li>
-  <li class="list-group-item"><strong>Zip_Code: </strong>{{ medic.zipCode }}</li>
-  <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic.group_id }}</li>
-  <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic.dateStart|date('Y-m-d')  }}</li>
-  <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic.dateEnd|date('Y-m-d')  }}</li>
-  <li class="list-group-item"><strong>FOto: </strong>{{ medic.image }}</li>
-  <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category_id }}</li>
-</ul>
+                                <ul class="list-group">
+                                 <li class="list-group-item"><img src="{{ asset('img/user.svg') }}" width="72px" alt="Perfil"/> </li>
+                                <li class="list-group-item"><strong>Direccion: </strong>{{ medic.address }}</li>
+                                <li class="list-group-item"><strong>Telefono: </strong>{{ medic.phone }}</li>
+                                <li class="list-group-item"><strong>Provincia: </strong>{{ medic.province }}</li>
+                                <li class="list-group-item"><strong>Cédula: </strong>{{ medic.cardId }}</li>
+                                <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic.group_id }}</li>
+                                <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic.dateStart|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic.dateEnd|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>FOto: </strong>{{ medic.image }}</li>
+                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category_id }}</li>
+                                </ul>
+                                <a class="btn float-right" href="/medic/new">Volver</a>  
 
-<hr>
-<a href="/medic">Volver</a>
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existe este médico actualmente.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/medic/category">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %} 
