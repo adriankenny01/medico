@@ -49,19 +49,18 @@ class EmployeeController extends Controller
             array('class' => 'form-control'), 'label' => 'Cedula'))
             ->add('address', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Direccion'))
-            ->add('phone', TelType::class, 
-            array( 'attr' =>
-            array('placeholder' => '_ _ _ . _ _ _ . _ _ _ _','class' => 'form-control'),'label' => 'Telefono' ))
+            ->add('phone', TelType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Telefono'))
             ->add('province', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Provincia'))
-            ->add('zip_code', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Codigo Postal'))
-            // ->add('nif', IntegerType::class, array('attr' =>
-            // array('class' => 'form-control')))
+            ->add('image', TextType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Foto'))
+            ->add('date_start', DateType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Inicio',
+            'widget' => 'single_text'))
+            
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
-            ->add('date_start', DateType::class, array('widget' => 'single_text','attr' =>
-            array('class' => 'form-control datepicker'),'label' => 'Fecha Inicio'))
             ->add('tipo_empleado', ChoiceType::class, [
                 'choices' => ['Auxiliares de enfermería' => 'Auxiliares de enfermería', 
                 'Celadores' => 'Celadores',
@@ -116,10 +115,12 @@ class EmployeeController extends Controller
         array('class' => 'form-control'),'label' => 'Telefono'))
         ->add('province', TextType::class, array('attr' =>
         array('class' => 'form-control'),'label' => 'Provincia'))
-        ->add('zip_code', IntegerType::class, array('attr' =>
-        array('class' => 'form-control'),'label' => 'Codigo Postal'))
-        // ->add('nif', IntegerType::class, array('attr' =>
-        // array('class' => 'form-control')))
+        ->add('image', TextType::class, array('attr' =>
+        array('class' => 'form-control'),'label' => 'Foto'))
+        ->add('date_start', DateType::class, array('attr' =>
+        array('class' => 'form-control'),'label' => 'Inicio',
+        'widget' => 'single_text'))
+        
         ->add('social_security', IntegerType::class, array('attr' =>
         array('class' => 'form-control'),'label' => 'Seguridad Social'))
         ->add('tipo_empleado', ChoiceType::class, [
@@ -188,7 +189,9 @@ class EmployeeController extends Controller
         $employee_vacation = $this->getDoctrine()->getRepository(Employee::class)->find($id);
         
         $vacationDays = new Helper();
-        $vacationDays = $vacationDays->vacationDays($employee_vacation->getDateStart());
+        $vacationDays = $vacationDays->vacationDays( $employee_vacation->getDateStart());
+
+        // var_dump($employee_vacation->getDateStart());die;
 
         $vacationTaken = $this->vacationTaken($id); 
 

@@ -1,10 +1,152 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Nueva Cita {% endblock %}
+{% block stylesheets %}
+    {# <link rel="stylesheet" href="{{ asset('css/form.css') }}"/> #}
+{% endblock %}
 
-{% block body %} 
-    <h2 class="mt-2 mb-4">Cita Medica</h2>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
-{% endblock %} 
+{% block title %}
+    Cita médica
+{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card card-user">
+                    <div class="image">
+                        <img alt="..." src="../assets/img/damir-bosnjak.jpg">
+                    </div>
+                    <div class="card-body">
+                        <div class="author">
+                            <a href="#">
+                                <img alt="..." class="avatar border-gray" src="../assets/img/mike.jpg">
+                                <h5 class="title">Chet Faker</h5>
+                            </a>
+                            <p class="description">
+                                @chetfaker
+                            </p>
+                        </div>
+                        <p class="description text-center">
+                            "I like the way you work it
+                            <br>
+                            No diggity
+                            <br>
+                            I wanna bag it up"
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <hr>
+                        <div class="button-container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-6 ml-auto">
+                                    <h5>12
+                                        <br>
+                                        <small>Files</small>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                                    <h5>2GB
+                                        <br>
+                                        <small>Used</small>
+                                    </h5>
+                                </div>
+                                <div class="col-lg-3 mr-auto">
+                                    <h5>24,6$
+                                        <br>
+                                        <small>Spent</small>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card"></div>
+
+            </div>
+            <div class="col-md-8">
+                <div class="card card-user">
+                    <div class="card-header">
+                        <h5 class="card-title">Cita médica</h5>
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+
+                        <div class="row">
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.title) }}
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.symptoms) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.medicaments) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.sick) }}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.medic) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.Patient) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.start) }}
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.end) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                {{ form_row(form.save) }}
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}{% endblock %}
+

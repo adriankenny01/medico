@@ -3,53 +3,64 @@
 {% block title %} Listar Citas {% endblock %}
 
 {% block body %} 
-<h2 class="mt-2 mb-4">Cita Medica</h2>
- <a href="/appointment/new/" class="btn btn-primary float-right mb-3">Crear</a>
-   {% if appointments %}
-        <table class="table table-striped data-show" id="appointments">
-            <thead>
-                <tr>
-                    <th>Titulo</th>
-                    <th>Paciente</th>
-                    <th>Medico</th>
-                    <th>Inicio</th>
-                    <th>Fin</th>
-                    <th>Simtomas</th>
-                    <th>Medicamentos</th>
-                    <th>Enfermedad</th>
-                    <th>Ver</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for appointment in appointments %}
-                   <tr>
-                       <td>{{ appointment.title }}</td>
-                       <td>{{ appointment.patient_name }}</td>
-                       <td>{{ appointment.medic_name }}</td>
-                       <td>{{ appointment.start|date('Y-m-d') }}</td>
-                       <td>{{ appointment.end|date('Y-m-d') }}</td>
-                       <td>{{ appointment.symptoms }}</td>
-                       <td>{{ appointment.medicaments }}</td>
-                       <td>{{ appointment.sick }}</td>
-                       <td>
-                        <a href="/appointment/{{ appointment.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                       </td>
-                       <td><a href="/appointment/edit/{{ appointment.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a></td>
-                       <td><a href="#" class="btn btn-danger delete-article" data-id=" {{ appointment.id }}"><i class="fas fa-trash-alt"></i></a></td>
-                   </tr> 
-                {% endfor %}
-            </tbody>
-        </table>
-   {% else %}
-    <div class="alert alert-dismissible alert-warning">
-        {# <button type="button" class="close" data-dismiss="alert">&times;</button> #}
-        <h4 class="alert-heading">Aviso</h4>
-        <p class="mb-0">No Existen citas medicas actualmente</a>.</p>
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">
+                        citas médicas
+                    </h4>
+                    <p class="card-category">
+                        Here is a subtitle for this table</p>
+                    <a class="btn btn-primary float-right" href="/appointment/new">Nuevo</a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        {% if appointments %}
+
+                            <table class="table data-show" id="appointments">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th>Titulo</th>
+                                            <th>Paciente</th>
+                                            <th>Medico</th>
+                                            <th>Inicio</th>
+                                            <th>Ver</th>
+                                            <th>Editar</th>
+                                            <th>Eliminar</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for appointment in appointments %}
+                                        <tr>
+                                            <td>{{ appointment.title }}</td>
+                                            <td>{{ appointment.patient_name }}</td>
+                                            <td>{{ appointment.medic_name }}</td>
+                                            <td>{{ appointment.start|date('Y-m-d') }}</td>
+                                            <td>
+                                                <a href="/appointment/{{ appointment.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                                            </td>
+                                            <td><a href="/appointment/edit/{{ appointment.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a></td>
+                                            <td><a href="#" class="btn btn-danger delete-article" data-id=" {{ appointment.id }}"><i class="fas fa-trash-alt"></i></a></td>
+                                        </tr> 
+                                        {% endfor %}
+                                    </tbody>
+                            </table>
+                        {% else %}
+                            <div class="alert alert-dismissible alert-warning">
+                                <h4 class="alert-heading">Aviso</h4>
+                                <p class="mb-0">No Existen citas médicas actualmente.</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <a href="/appointment/new/" class="btn btn-primary float-right">Crear</a>
-   {% endif %}
+</div>
+
 {% endblock %} 
 
 {% block javascripts %}

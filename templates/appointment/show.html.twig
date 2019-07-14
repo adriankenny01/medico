@@ -1,14 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Cita medica {% endblock %}
+{% block title %} {{ 'Cita : ' ~ appointment.title }} {% endblock %}
 
 {% block body %} 
-<h2 class="mt-2 mb-4">Cita Medica</h2>
-<h1>{{ appointment.title}}</h1>
-<p>{{ appointment.symptoms}}</p>
-<p>{{ appointment.medicaments}}</p>
-<p>{{ appointment.sick}}</p>
+<div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">
+                            {{ 'Cita : ' ~ appointment.title }}
+                        </h4>
+                        <p class="card-category">
+                            Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            {% if appointment %}
 
-<hr>
-<a href="/appointment">Go Back</a>
+                                <ul class="list-group">
+                                  <li class="list-group-item"><strong>Título : </strong>{{ appointment.title }}</li>
+                                  <li class="list-group-item"><strong>Simtomas : </strong>{{ appointment.symptoms }}</li>
+                                  <li class="list-group-item"><strong>Medicamento : </strong>{{ appointment.medicaments }}</li>
+                                  <li class="list-group-item"><strong>Enfermeda : </strong>{{ appointment.sick }}</li>
+                                  <li class="list-group-item"><strong>Foto : foto de paciente</li>
+                                </ul>
+                                <a class="btn float-right" href="/appointment">Volver</a>  
+
+                            {% else %}
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button class="close" data-dismiss="alert" type="button">&times;</button>
+                                    <h4 class="alert-heading">Aviso</h4>
+                                    <p class="mb-0">No Existe esta cita.</p>
+                                </div>
+                                <a class="btn btn-primary float-right" href="/medic/category">Nuevo</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %} 

@@ -72,6 +72,8 @@
                     </div>
                     <div class="card-body">
                         {{ form_start(form) }}
+                        {# <form> #}
+
                         <div class="row">
                             <div class="col-md-12 p-2">
                                 <div class="form-group">
@@ -88,26 +90,33 @@
                             </div>
                         </div>
                         <div class="row">
+                            
                             <div class="col-md-6 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.card_id) }}
                                 </div>
                             </div>
+                            
+                            
+
                             <div class="col-md-6 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.image) }}
                                 </div>
                             </div>
+
                             <div class="col-md-3 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.phone) }}
                                 </div>
                             </div>
+
                             <div class="col-md-3 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.social_security) }}
                                 </div>
                             </div>
+
                             <div class="col-md-6 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.province) }}
@@ -116,11 +125,11 @@
                         </div>
                         
                         <div class="row">
-                            {# <div class="col-md-6 p-2">
+                            <div class="col-md-6 p-2">
                                 <div class="form-group">
                                     {{ form_row(form.date_start) }}
                                 </div>
-                            </div> #}
+                            </div>
 
                             <div class="col-md-6 p-2">
                                 <div class="form-group">
@@ -132,8 +141,10 @@
                         <div class="row">
                             <div class="update ml-auto mr-auto">
                                 {{ form_row(form.save) }}
+                                {# <button class="btn btn-primary btn-round" type="submit">Guardar</button> #}
                             </div>
                         </div>
+                        {# </form> #}
                         {{ form_end(form) }}
                     </div>
                 </div>

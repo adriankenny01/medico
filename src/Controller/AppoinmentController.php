@@ -76,9 +76,11 @@ class AppoinmentController extends Controller
             
             
             ->add('start', DateType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Fecha cita'))
+            array('class' => 'form-control'),'label' => 'Fecha cita',
+            'widget' => 'single_text'))
             ->add('end', DateType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Fecha cita fin'))
+            array('class' => 'form-control'),'label' => 'Fecha cita fin',
+            'widget' => 'single_text'))
            
             ->add('medic', EntityType::class, [
                 'class' => Medic::class, 
@@ -105,6 +107,7 @@ class AppoinmentController extends Controller
                 $appointment = $form->getData();
 
                 $entityManager = $this->getDoctrine()->getManager();
+                $appointment->setState(1);
                 $entityManager->persist($appointment);
                 $entityManager->flush();
 
@@ -148,9 +151,11 @@ class AppoinmentController extends Controller
             
             
             ->add('start', DateType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Inicio'))
+            array('class' => 'form-control'),'label' => 'Fecha cita',
+            'widget' => 'single_text'))
             ->add('end', DateType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Fin'))
+            array('class' => 'form-control'),'label' => 'Fecha cita fin',
+            'widget' => 'single_text'))
         
             ->add('medic', EntityType::class, [
                 'class' => Medic::class, 
