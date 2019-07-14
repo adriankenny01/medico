@@ -11,8 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -48,9 +48,10 @@ class VacationController extends Controller
                 "attr"=>array('class' => 'form-control'),
                 'label' => 'Tipo'
             ])
-            ->add('date_init', TextType::class, array(
-                'attr' => array('class' => 'form-control datepicker'),
-                'label' => 'Fecha Inicio'
+            ->add('date_init', DateType::class, array(
+                'attr' => array('class' => 'form-control'),
+                'label' => 'Fecha Inicio',
+                'widget' => 'single_text'
             ))
             ->add('days_taken', IntegerType::class, array('attr' =>
             array('class' => 'form-control'), 'label' => 'Dias a tomar'))
@@ -78,17 +79,21 @@ class VacationController extends Controller
                 $vacation = $form->getData();
                 
                 $entityManager = $this->getDoctrine()->getManager();
-
-                $entityManager->persist($vacation);
-                $entityManager->flush();
-
+                
                 if($m_id){
+                    $vacation->setMedicId($m_id);
+                    $entityManager->persist($vacation);
+                    $entityManager->flush();
                     return $this->redirectToRoute('medic_list');
                 }else{
+                    $vacation->setEmployeeId($e_id);
+                    $entityManager->persist($vacation);
+                    $entityManager->flush();
                     return $this->redirectToRoute('employee_list');
                 }
 
                 
+
             }
 
             return $this->render('vacation/new.html.twig', array(

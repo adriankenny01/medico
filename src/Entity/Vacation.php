@@ -37,7 +37,7 @@ class Vacation
     private $observations;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="date")
      */
     private $date_init;
 
@@ -104,17 +104,29 @@ class Vacation
         return $this;
     }
 
-    public function getDateInit(): ?string
+    public function getDateInit()
     {
         return $this->date_init;
     }
 
-    public function setDateInit(?string $date_init): self
+    public function setDateInit($date_init)
     {
         $this->date_init = $date_init;
 
         return $this;
     }
+
+    // public function getDateInit(): ?string
+    // {
+    //     return $this->date_init;
+    // }
+
+    // public function setDateInit(?string $date_init): self
+    // {
+    //     $this->date_init = $date_init;
+
+    //     return $this;
+    // }
 
     public function getEmployeeId(): ?int
     {
@@ -152,7 +164,7 @@ class Vacation
         return $this->employee;
     }
 
-    public function etEmployee($employee)
+    public function setEmployee($employee)
     {
         $this->employee = $employee;
         return $this;
