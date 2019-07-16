@@ -31,9 +31,7 @@
                             <table class="table data-show" id="medics">
                                  <thead>
                                     <tr class="text-primary">
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Direccion</th>
+                                        <th>Nombre Completo</th>
                                         <th>Telefono</th>
                                          <th>Grupo Medico</th>
                                         <th>Especialidad</th>
@@ -47,9 +45,7 @@
                                 <tbody>
                                     {% for medic in medics %}
                                     <tr>
-                                        <td>{{ medic.name }}</td>
-                                        <td>{{ medic.last_name }}</td>
-                                        <td>{{ medic.address }}</td>
+                                        <td>{{ medic.name  ~' '~ medic.last_name }}</td>
                                         <td>{{ medic.phone }}</td>
                                         <td>{{ medic.medic_group }}</td>
                                         {# <td>{{ medic.date_start|date('Y-m-d')  }}</td> #}

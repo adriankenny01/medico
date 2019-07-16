@@ -152,39 +152,39 @@ class Vacation
         return $this;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Employee", inversedBy="vacation")
-     * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
-     */
-    private $employee;
+    // /**
+    //  * @ORM\ManyToOne(targetEntity="Employee", inversedBy="vacation")
+    //  * @ORM\JoinColumn(name="employee_id", referencedColumnName="id")
+    //  */
+    // private $employee;
 
 
-    public function getEmployee()
-    {
-        return $this->employee;
-    }
+    // public function getEmployee()
+    // {
+    //     return $this->employee;
+    // }
 
-    public function setEmployee($employee)
-    {
-        $this->employee = $employee;
-        return $this;
-    }
+    // public function setEmployee($employee)
+    // {
+    //     $this->employee = $employee;
+    //     return $this;
+    // }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Medic", inversedBy="vacation")
-     * @ORM\JoinColumn(name="medic_id", referencedColumnName="id")
-     */
-    private $medic;
+    // /**
+    //  * @ORM\ManyToOne(targetEntity="Medic", inversedBy="vacation")
+    //  * @ORM\JoinColumn(name="medic_id", referencedColumnName="id")
+    //  */
+    // private $medic;
 
 
-    public function getMedic()
-    {
-        return $this->medic;
-    }
+    // public function getMedic()
+    // {
+    //     return $this->medic;
+    // }
 
-    public function setMedic($medic)
-    {
-        $this->medic = $medic;
-        return $this;
-    }
+    // public function setMedic($medic)
+    // {
+    //     $this->medic = $medic;
+    //     return $this;
+    // }
 }

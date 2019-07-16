@@ -148,7 +148,7 @@ class Medic
 
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="date")
      */
     
     private $date_start;
@@ -383,6 +383,28 @@ class Medic
     public function removeAppoinments($appoinments)
     {
         $this->appoinments->removeElement($appoinments);
+        return $this;
+    }
+
+     /**
+     * @ORM\OneToMany(targetEntity="Vacation", mappedBy="Medic")
+     */
+    private $vacations;
+
+    public function getvacations()
+    {
+        return $this->vacations;
+    }
+
+    public function addvacations($vacations)
+    {
+        $this->vacations [] = $vacations;
+        return $this;
+    }
+
+    public function removevacations($vacations)
+    {
+        $this->vacations->removeElement($vacations);
         return $this;
     }
 }

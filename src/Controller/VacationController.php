@@ -80,20 +80,14 @@ class VacationController extends Controller
                 
                 $entityManager = $this->getDoctrine()->getManager();
                 
+                $entityManager->persist($vacation);
+                $entityManager->flush();
+
                 if($m_id){
-                    $vacation->setMedicId($m_id);
-                    $entityManager->persist($vacation);
-                    $entityManager->flush();
                     return $this->redirectToRoute('medic_list');
                 }else{
-                    $vacation->setEmployeeId($e_id);
-                    $entityManager->persist($vacation);
-                    $entityManager->flush();
                     return $this->redirectToRoute('employee_list');
                 }
-
-                
-
             }
 
             return $this->render('vacation/new.html.twig', array(

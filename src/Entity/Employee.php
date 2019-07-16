@@ -182,5 +182,29 @@ class Employee
     public function setState($state) {
        $this->state = $state;
     }
+
+    //Relations
+    
+     /**
+     * @ORM\OneToMany(targetEntity="Vacation", mappedBy="Medic")
+     */
+    private $vacations;
+
+    public function getvacations()
+    {
+        return $this->vacations;
+    }
+
+    public function addvacations($vacations)
+    {
+        $this->vacations [] = $vacations;
+        return $this;
+    }
+
+    public function removevacations($vacations)
+    {
+        $this->vacations->removeElement($vacations);
+        return $this;
+    }
 }
 

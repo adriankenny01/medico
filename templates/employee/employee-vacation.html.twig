@@ -45,8 +45,8 @@
                                 <tbody>
                                     <tr>
                                         <td>{{ employee_vacation.fullName }}</td>
-                                        <td>Medico</td>
-                                        <td>{{ employee_vacation.dateStart|date('d - F - y') }}</td>
+                                        <td>Empleado</td>
+                                        <td>{{ employee_vacation.dateStart|date('d/F/y') }}</td>
                                         <td>{{ vacationDays }}</td>
                                         <td>{{ vacationTaken }}</td>
                                         <td>{{ vacationDays - vacationTaken }}</td>

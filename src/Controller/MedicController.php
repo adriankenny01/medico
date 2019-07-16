@@ -17,6 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -75,13 +76,12 @@ class MedicController extends Controller
                 'label' => 'Grupo Medico'
             ])
 
-            ->add('date_start', TextType::class, array(
+            ->add('date_start', DateType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
-                    'widget' => 'single_text'
                 ),
                 'label' => 'Fecha Inicio',
-                
+                'widget' => 'single_text'
             ))
             ->add('date_end', TextType::class, array(
                 'attr' => array('class' => 'form-control datepicker'),
@@ -284,23 +284,6 @@ class MedicController extends Controller
            'vacationDays' => $vacationDays,
            'vacationTaken' => $vacationTaken['days_taken']
         ));
-    }
-
-    public function vacationDays($date){
-       
-        $date_current = new \DateTime();
-        $date_init =  new \DateTime($date);
-        $difference = $date_current->diff($date_init);
-        $year_difference = $difference->format('%y');
-        $vacation_days = 0;
-        if($year_difference <= 5){
-            $vacation_days = $year_difference*15;
-        }elseif($year_difference > 5 && $year_difference <= 10){
-            $vacation_days = 75+($year_difference-5)*20;
-        }elseif($year_difference > 10){
-            $vacation_days = 75+100+($year_difference-10)*30;
-        }
-        return $vacation_days;
     }
 
     public function vacationTaken($medic_id){

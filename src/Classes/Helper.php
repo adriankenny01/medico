@@ -5,9 +5,9 @@ namespace App\Classes;
 class Helper {
     
     public function vacationDays($date){
-       
+        
         $date_current = new \DateTime();
-        $date_init =  new \DateTime($date);
+        $date_init = $date;
         $difference = $date_current->diff($date_init);
         $year_difference = $difference->format('%y');
         $vacation_days = 0;

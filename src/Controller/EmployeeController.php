@@ -191,8 +191,6 @@ class EmployeeController extends Controller
         $vacationDays = new Helper();
         $vacationDays = $vacationDays->vacationDays( $employee_vacation->getDateStart());
 
-        // var_dump($employee_vacation->getDateStart());die;
-
         $vacationTaken = $this->vacationTaken($id); 
 
         return $this->render('employee/employee-vacation.html.twig' , array (
