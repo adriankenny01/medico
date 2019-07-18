@@ -36,7 +36,7 @@
                     <p>Médicos</p> 
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'patient_list' ? 'active' }}">
+            <li class="{{ app.request.get('_route') == 'patient_list' ? 'active' : (app.request.get('_route')) == 'patient_show' ? 'active' }}">
                 <a href="{{ path('patient_list') }}">
                     <i class="nc-icon nc-pin-3"></i>
                     <p>Pacientes</p>

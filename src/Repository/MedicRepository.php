@@ -47,4 +47,15 @@ class MedicRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function showMedic(int $category_id, int $type){
+        
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = 'SELECT * FROM fortune_cookie';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        $stmt->fetchAll();
+
+    }
 }

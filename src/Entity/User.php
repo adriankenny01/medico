@@ -106,6 +106,7 @@ class User implements UserInterface, \Serializable
             'ROLE_MEDIC',
             'ROLE_APPOINTMENTS',
             'ROLE_SCHEDULES',
+            'ROLE_ADMIN'
         ];
     }
 

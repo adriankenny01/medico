@@ -8,6 +8,8 @@ use App\Entity\Category;
 use App\Entity\Schedule;
 use App\Entity\Vacation;
 
+use App\Repository\MedicRepository;
+
 use App\Classes\Helper;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -229,7 +231,12 @@ class MedicController extends Controller
      * @Route("/medic/{id}",  name="medic_show")
      */
     public function show($id) {
-        $medic = $this->getDoctrine()->getRepository(Medic::class)->find($id);
+
+        $em = $this->getDoctrine()->getManager();
+        $medic = $em->getRepository('App:Medic')
+            ->showMedic(5,8);
+
+        // $medic = $this->getDoctrine()->getRepository(Medic::class)->find($id);
 
         return $this->render('medic/show.html.twig' , array (
             'medic' => $medic

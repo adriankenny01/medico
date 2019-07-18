@@ -28,7 +28,7 @@
                                 <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic.dateStart|date('Y-m-d')  }}</li>
                                 <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic.dateEnd|date('Y-m-d')  }}</li>
                                 <li class="list-group-item"><strong>FOto: </strong>{{ medic.image }}</li>
-                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category_id }}</li>
+                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category.area }}</li>
                                 </ul>
                                 <a class="btn float-right" href="/medic/new">Volver</a>  
 

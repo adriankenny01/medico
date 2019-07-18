@@ -54,16 +54,31 @@ class UserController extends Controller{
                     
                 ) ,'label' => false
             ))
-            ->add('username', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Usuario'))
-            ->add('email', EmailType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'E-mail'))
-            ->add('password', PasswordType::class, array('attr' =>
-            array('class' => 'form-control'), 'label' => 'Contrasena'))
+            ->add('username', TextType::class, array(
+                'attr' => array(
+                    'class' => 'form-control', 
+                    'placeholder' => 'Nombre de Usuario',
+                    
+                ) ,'label' => false
+            ))
+            ->add('email', EmailType::class, array(
+                'attr' => array(
+                    'class' => 'form-control', 
+                    'placeholder' => 'Email',
+                    
+                ) ,'label' => false
+            ))
+            ->add('password', PasswordType::class, array(
+                'attr' => array(
+                    'class' => 'form-control', 
+                    'placeholder' => 'Contrasena',
+                    
+                ) ,'label' => false
+            ))
             
             ->add('save', SubmitType::class, array(
                 'label' => 'Crear', 
-                'attr'  => array('class' => 'btn btn-primary mt-3')
+                'attr'  => array('class' => 'btn-lg btn-primary btn-block mt-4')
             ))
             ->getForm();
 
@@ -75,6 +90,8 @@ class UserController extends Controller{
                 $user->setPassword(
                     $this->encoder->encodePassword($user, $user->getPassword())
                 );
+
+                $user->setState(1);
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
