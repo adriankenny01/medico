@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Employee;
+
 class DashboardController extends AbstractController
 {
     /**
@@ -12,8 +14,16 @@ class DashboardController extends AbstractController
      */
     public function index()
     {
+        $employee = $this->countEmployee();
+       
         return $this->render('dashboard/index.html.twig', [
-            'controller_name' => 'DashboardController',
+            'employee' => $employee ,
         ]);
+    }
+
+    private function countEmployee(){
+        $employee = $this->getDoctrine()->getRepository(Employee::class)->countAll();
+
+        return $employee;
     }
 }

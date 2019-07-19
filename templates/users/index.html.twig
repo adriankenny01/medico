@@ -26,7 +26,6 @@
                                         <th>Nombre Completo</th>
                                         <th>Usuario</th>
                                         <th>Correo</th>
-                                        <th>Estado</th>
                                         <th>Actiones</th>
                                     </tr>
                                 </thead>
@@ -36,7 +35,6 @@
                                         <td>{{ user.name }}</td>
                                         <td>{{ user.username }}</td>
                                         <td>{{ user.email }}</td>
-                                        <td>{{ user.state }}</td>
                                         <td>
                                             <a href="/user/{{ user.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
                                             <a href="/user/edit/{{ user.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>

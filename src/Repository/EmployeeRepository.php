@@ -47,4 +47,16 @@ class EmployeeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function countAll()
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.state = :state')
+            ->setParameter('state', 1)
+            ->select('COUNT(e.id) AS total_empleados')
+            ->getQuery()
+            ->getSingleScalarResult()
+
+        ;
+    }
 }

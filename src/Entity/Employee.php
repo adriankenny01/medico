@@ -192,6 +192,7 @@ class Employee
 
     public function getvacations()
     {
+        
         return $this->vacations;
     }
 
