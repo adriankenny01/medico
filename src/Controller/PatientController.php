@@ -63,6 +63,8 @@ class PatientController extends Controller
             if($form->isSubmitted() && $form->isValid()){
                 $patient = $form->getData();
 
+                $patient->setState(1);
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($patient);
                 $entityManager->flush();
@@ -85,9 +87,6 @@ class PatientController extends Controller
         $patient = new Patient();
 
         $patient = $this->getDoctrine()->getRepository(Patient::class)->find($id);
-
-        var_dump($patient);die;
-        
 
         $form = $this->createFormBuilder($patient)
             ->add('full_name', TextType::class, array('attr' =>
@@ -121,7 +120,7 @@ class PatientController extends Controller
 
             return $this->render('patient/edit.html.twig', array(
                 'form' => $form->createView(),
-                // 'full_name' => 
+                'full_name' => $patient->getFullName()
             ));
     }
 

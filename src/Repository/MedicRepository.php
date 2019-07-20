@@ -48,14 +48,35 @@ class MedicRepository extends ServiceEntityRepository
     }
     */
 
-    public function showMedic(int $category_id, int $type){
+    public function showMedic(int $medic_id){
         
         $conn = $this->getEntityManager()->getConnection();
         
-        $sql = 'SELECT * FROM fortune_cookie';
+        $sql = "SELECT 
+                    m.id,
+                    m.name,
+                    m.last_name,
+                    m.address,
+                    m.phone,
+                    m.province,
+                    m.social_security,
+                    m.number_of_collegiate,
+                    g.name AS 'grupo',
+                    m.image,
+                    m.date_start,
+                    m.date_end,
+                    c.area AS 'area medica',
+                    m.card_id,
+                    CONCAT(s.day_one, ' - ', s.from_hour_day_one ,' a ', s.to_hour_day_one, ' ', s.day_two, ' - ', s.from_hour_day_two, ' a ', s.to_hour_day_two )
+                        AS 'horario'
+                FROM medic AS m
+                    LEFT JOIN medic_group AS g ON m.group_id = g.id
+                LEFT JOIN category AS c ON m.category_id = c.id
+                    LEFT JOIN schedule AS s ON m.schedule_id = s.id
+                    WHERE m.state = 1 AND m.id =  :id";
         $stmt = $conn->prepare($sql);
+        $stmt->bindValue('id', $medic_id);
         $stmt->execute();
         $stmt->fetchAll();
-
     }
 }

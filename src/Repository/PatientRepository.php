@@ -47,4 +47,16 @@ class PatientRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function countAll()
+    {
+        return $this->createQueryBuilder('p')
+             ->andWhere('p.state = :state')
+            ->setParameter('state', 1)
+            ->select('COUNT(p.id) AS total_pacientes')
+            ->getQuery()
+            ->getSingleScalarResult()
+
+        ;
+    }
 }

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block title %}
-    Nuevo Medico
+    Editar Medico
 {% endblock %}
 
 {% block body %}
@@ -68,7 +68,7 @@
             <div class="col-md-8">
                 <div class="card card-user">
                     <div class="card-header">
-                        <h5 class="card-title">Nuevo Medico</h5>
+                        <h5 class="card-title">Editar Medico</h5>
                     </div>
                     <div class="card-body">
                         {{ form_start(form) }}
@@ -196,10 +196,9 @@
                         <div class="row">
                             <div class="update ml-auto mr-auto">
                                 {{ form_row(form.save) }}
-                                {# <button class="btn btn-primary btn-round" type="submit">Guardar</button> #}
                             </div>
                         </div>
-                        {# </form> #}
+                        
                         {{ form_end(form) }}
                     </div>
                 </div>

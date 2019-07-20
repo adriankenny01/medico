@@ -85,10 +85,12 @@ class MedicController extends Controller
                 'label' => 'Fecha Inicio',
                 'widget' => 'single_text'
             ))
-            ->add('date_end', TextType::class, array(
-                'attr' => array('class' => 'form-control datepicker'),
-                'required' => false,
-                'label' => 'Fecha Fin'
+            ->add('date_end', DateType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                ),
+                'label' => 'Fecha Fin',
+                'widget' => 'single_text'
             ))
             
             ->add('category', EntityType::class, [
@@ -122,7 +124,9 @@ class MedicController extends Controller
             
             if($form->isSubmitted() && $form->isValid()){
                 $medic = $form->getData();
-     
+                
+                $medic->setState(1);
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($medic);
                 $entityManager->flush();
@@ -175,14 +179,19 @@ class MedicController extends Controller
                 'label' => 'Grupo Medico'
             ])
 
-            ->add('date_start', TextType::class, array(
-                'attr' => array('class' => 'form-control datepicker'),
-                'label' => 'Fecha Inicio'
+            ->add('date_start', DateType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                ),
+                'label' => 'Fecha Inicio',
+                'widget' => 'single_text'
             ))
-            ->add('date_end', TextType::class, array(
-                'attr' => array('class' => 'form-control datepicker'),
-                'required' => false,
-                'label' => 'Fecha Fin'
+            ->add('date_end', DateType::class, array(
+                'attr' => array(
+                    'class' => 'form-control',
+                ),
+                'label' => 'Fecha Fin',
+                'widget' => 'single_text'
             ))
             
             ->add('category', EntityType::class, [
@@ -216,6 +225,8 @@ class MedicController extends Controller
 
             if($form->isSubmitted() && $form->isValid()){
                
+                $medic->setState(1);
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
 
@@ -234,7 +245,9 @@ class MedicController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $medic = $em->getRepository('App:Medic')
-            ->showMedic(5,8);
+            ->showMedic();
+
+        // var_dump($medic);die;
 
         // $medic = $this->getDoctrine()->getRepository(Medic::class)->find($id);
 
