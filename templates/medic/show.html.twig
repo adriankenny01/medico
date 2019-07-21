@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ medic.name}} {{ medic.lastName }} {% endblock %}
+{% block title %} {{ medic[0].name}} {{ medic[0].last_name }} {% endblock %}
 
 {% block body %} 
 <div class="content">
@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">
-                            {{ medic.name}} {{ medic.lastName }}
+                            {{ medic[0].name}} {{ medic[0].last_name }}
                         </h4>
                         <p class="card-category">
                             Here is a subtitle for this table</p>
@@ -20,15 +20,15 @@
 
                                 <ul class="list-group">
                                  <li class="list-group-item"><img src="{{ asset('img/user.svg') }}" width="72px" alt="Perfil"/> </li>
-                                <li class="list-group-item"><strong>Direccion: </strong>{{ medic.address }}</li>
-                                <li class="list-group-item"><strong>Telefono: </strong>{{ medic.phone }}</li>
-                                <li class="list-group-item"><strong>Provincia: </strong>{{ medic.province }}</li>
-                                <li class="list-group-item"><strong>Cédula: </strong>{{ medic.cardId }}</li>
-                                <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic.group_id }}</li>
-                                <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic.dateStart|date('Y-m-d')  }}</li>
-                                <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic.dateEnd|date('Y-m-d')  }}</li>
-                                <li class="list-group-item"><strong>FOto: </strong>{{ medic.image }}</li>
-                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic.category.area }}</li>
+                                <li class="list-group-item"><strong>Direccion: </strong>{{ medic[0].address }}</li>
+                                <li class="list-group-item"><strong>Telefono: </strong>{{ medic[0].phone }}</li>
+                                <li class="list-group-item"><strong>Provincia: </strong>{{ medic[0].province }}</li>
+                                <li class="list-group-item"><strong>Cédula: </strong>{{ medic[0].card_id }}</li>
+                                <li class="list-group-item"><strong>Tipo empleado: </strong>{{ medic[0].grupo }}</li>
+                                <li class="list-group-item"><strong>Fecha Inicio: </strong>{{ medic[0].date_start|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic[0].date_end|date('Y-m-d')  }}</li>
+                                <li class="list-group-item"><strong>FOto: </strong>{{ medic[0].image }}</li>
+                                <li class="list-group-item"><strong>Categoria: </strong>{{ medic[0].area_medica }}</li>
                                 </ul>
                                 <a class="btn float-right" href="/medic/new">Volver</a>  
 

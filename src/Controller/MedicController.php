@@ -245,12 +245,9 @@ class MedicController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $medic = $em->getRepository('App:Medic')
-            ->showMedic();
+            ->showMedic($id);
 
-        // var_dump($medic);die;
-
-        // $medic = $this->getDoctrine()->getRepository(Medic::class)->find($id);
-
+            // var_dump($medic);die;
         return $this->render('medic/show.html.twig' , array (
             'medic' => $medic
         ));

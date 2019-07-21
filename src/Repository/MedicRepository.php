@@ -65,7 +65,7 @@ class MedicRepository extends ServiceEntityRepository
                     m.image,
                     m.date_start,
                     m.date_end,
-                    c.area AS 'area medica',
+                    c.area AS 'area_medica',
                     m.card_id,
                     CONCAT(s.day_one, ' - ', s.from_hour_day_one ,' a ', s.to_hour_day_one, ' ', s.day_two, ' - ', s.from_hour_day_two, ' a ', s.to_hour_day_two )
                         AS 'horario'
@@ -77,6 +77,7 @@ class MedicRepository extends ServiceEntityRepository
         $stmt = $conn->prepare($sql);
         $stmt->bindValue('id', $medic_id);
         $stmt->execute();
-        $stmt->fetchAll();
+
+        return $stmt->fetchAll();
     }
 }

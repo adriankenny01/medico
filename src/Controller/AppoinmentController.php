@@ -106,6 +106,14 @@ class AppoinmentController extends Controller
             if($form->isSubmitted() && $form->isValid()){
                 $appointment = $form->getData();
 
+                $em = $this->getDoctrine()->getManager();
+
+                $patientAppoinment = $em->getRepository('App:Appoinment')->ValidateQtyPerDay($appointment->getMedic()->getId(), $appointment->getStart());
+                
+                //validate qty of patient by that day
+                
+
+
                 $entityManager = $this->getDoctrine()->getManager();
                 $appointment->setState(1);
                 $entityManager->persist($appointment);
