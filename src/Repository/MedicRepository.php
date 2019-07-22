@@ -48,6 +48,17 @@ class MedicRepository extends ServiceEntityRepository
     }
     */
 
+    public function countAll()
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.state = :state')
+            ->setParameter('state', 1)
+            ->select('COUNT(m.id) AS total_medicos')
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
     public function showMedic(int $medic_id){
         
         $conn = $this->getEntityManager()->getConnection();

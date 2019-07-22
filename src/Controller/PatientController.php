@@ -49,6 +49,8 @@ class PatientController extends Controller
             array('class' => 'form-control'),'label' => 'Direccion'))
             ->add('phone', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Telefono'))
+            ->add('photo', TextType::class, array('attr' =>
+            array('class' => 'form-control'),'label' => 'Foto'))
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             

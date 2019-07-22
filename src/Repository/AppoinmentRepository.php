@@ -48,14 +48,45 @@ class AppoinmentRepository extends ServiceEntityRepository
     }
     */
 
-        public function ValidateQtyPerDay(int $medic_id, $date_start){
+    public function countAll()
+    {
+        return $this->createQueryBuilder('a')
+             ->Where('a.state = :state')
+            ->setParameter('state', 1)
+            ->andWhere('a.start = :today')
+            ->setParameter('today', '2019-07-20')
+            ->select('COUNT(a.id) AS total_citas')
+            ->getQuery()
+            ->getSingleScalarResult()
+
+        ;
+    }
+
+    public function ValidateAppoinment(int $patient_id, $date_start){
         
         $conn = $this->getEntityManager()->getConnection();
         
-        $sql = "SELECT COUNT(id)  FROM appoinment 
+        $sql = "SELECT COUNT(id) AS cantidad FROM appoinment 
+	                WHERE patient_id = :id AND 
+                DATE_FORMAT(start, '%d - %M') = DATE_FORMAT(:date_start, '%d - %M')";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue('id', $patient_id);
+        $date_start = $date_start->format('Y-m-d');
+        $stmt->bindValue('date_start', $date_start);
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+
+    public function ValidateQtyPerDay(int $medic_id, $date_start){
+        
+        $conn = $this->getEntityManager()->getConnection();
+        
+        $sql = "SELECT COUNT(id) AS cantidad FROM appoinment 
 	                WHERE medic_id = :id AND 
                 DATE_FORMAT(start, '%d - %M') = DATE_FORMAT(:date_start, '%d - %M')";
-                
+
         $stmt = $conn->prepare($sql);
         $stmt->bindValue('id', $medic_id);
         $date_start = $date_start->format('Y-m-d');

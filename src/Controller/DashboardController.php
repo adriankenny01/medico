@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Employee;
 use App\Entity\Patient;
+use App\Entity\Appoinment;
+use App\Entity\Medic;
 
 class DashboardController extends AbstractController
 {
@@ -17,11 +19,27 @@ class DashboardController extends AbstractController
     {
         $employee = $this->countEmployee();
         $patient = $this->countPatient();
-       
+        $appoinment = $this->countAppoinment();
+        $medic = $this->countMedic();
+
         return $this->render('dashboard/index.html.twig', [
             'employee'  => $employee ,
-            'patient'   => $patient
+            'patient'   => $patient,
+            'appoinment'   => $appoinment,
+            'medic'   => $medic
         ]);
+    }
+
+    private function countMedic(){
+        $medic = $this->getDoctrine()->getRepository(Medic::class)->countAll();
+
+        return $medic;
+    }
+
+    private function countAppoinment(){
+        $appoinment = $this->getDoctrine()->getRepository(Appoinment::class)->countAll();
+
+        return $appoinment;
     }
 
     private function countEmployee(){

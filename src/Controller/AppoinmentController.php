@@ -108,11 +108,23 @@ class AppoinmentController extends Controller
 
                 $em = $this->getDoctrine()->getManager();
 
-                $patientAppoinment = $em->getRepository('App:Appoinment')->ValidateQtyPerDay($appointment->getMedic()->getId(), $appointment->getStart());
+                $LimitPatientAppoinmentPerDay = $em->getRepository('App:Appoinment')->ValidateQtyPerDay($appointment->getMedic()->getId(), $appointment->getStart());
+                $PreviousPatientAppoinment = $em->getRepository('App:Appoinment')->ValidateAppoinment($appointment->getPatient()->getId(), $appointment->getStart());
                 
                 //validate qty of patient by that day
-                
-
+                if( $LimitPatientAppoinmentPerDay[0]['cantidad']  > 10){
+                    return $this->render('appointment/new.html.twig', array(
+                        'form' => $form->createView(),
+                        'cantidad_citas'    => 'Hemos llegado al límite de pacientes por el día de hoy.',
+                        'existe_cita'    => 0
+                    ));
+                }else if( $PreviousPatientAppoinment[0]['cantidad']  >= 1 ){
+                    return $this->render('appointment/new.html.twig', array(
+                        'form' => $form->createView(),
+                        'cantidad_citas' => 0,
+                        'existe_cita'    => 'Ya existe este cita.'
+                    ));
+                }
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $appointment->setState(1);
@@ -123,7 +135,9 @@ class AppoinmentController extends Controller
             }
 
             return $this->render('appointment/new.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'cantidad_citas' => 0,
+                'existe_cita'   => 0
             ));
     }
 
