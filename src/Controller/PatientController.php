@@ -10,10 +10,18 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+// use Symfony\Component\HttpFoundation\File\Exception\FileException;
+// use Symfony\Component\HttpFoundation\File\UploadedFile;
+
+use Symfony\Component\Validator\Constraints\File;
+// use Symfony\Component\HttpFoundation\File\File;
+
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class PatientController extends Controller
@@ -49,8 +57,29 @@ class PatientController extends Controller
             array('class' => 'form-control'),'label' => 'Direccion'))
             ->add('phone', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Telefono'))
-            ->add('photo', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Foto'))
+            ->add('photo', FileType::class, [
+                'label' => 'Foto de perfil',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // everytime you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Por favor sube una imagen valida.',
+                    ])
+                ],
+            ])
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             
@@ -64,6 +93,31 @@ class PatientController extends Controller
             
             if($form->isSubmitted() && $form->isValid()){
                 $patient = $form->getData();
+
+                $patientPhoto = $form['photo']->getData();
+
+                // this condition is needed because the 'brochure' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($patientPhoto) {
+                    $originalFilename = pathinfo($patientPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$patientPhoto->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $patientPhoto->move(
+                            $this->getParameter('patient_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $patient->setPhoto($newFilename);
+                }
 
                 $patient->setState(1);
 
