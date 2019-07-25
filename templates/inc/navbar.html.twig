@@ -20,61 +20,81 @@
         <ul class="nav">
             <li class="{{ app.request.get('_route') == 'dashboard' ? 'active' }}">
                 <a href="{{ path('dashboard') }}">  
-                    <i class="nc-icon nc-bank"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
                     <p>Dashboard</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'employee_list' ? 'active' : (app.request.get('_route')) == 'new_employee' ? 'active' : (app.request.get('_route')) == 'employee_show' ? 'active' : (app.request.get('_route')) == 'update_employee' ? 'active' : (app.request.get('_route')) == 'employee_vacation' ? 'active'  }}">
                 <a href="{{ path('employee_list') }}">
-                    <i class="nc-icon nc-diamond"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user"></i>
+                    </div>
                     <p>Empleados</p> 
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'medic_list' ? 'active' : (app.request.get('_route')) == 'new_medic' ? 'active' : (app.request.get('_route')) == 'update_medic' ? 'active' : (app.request.get('_route')) == 'medic_show' ? 'active' : (app.request.get('_route')) == 'medic_schedule' ? 'active' : (app.request.get('_route')) == 'medic_vacation' ? 'active'  }}">
+            <li class="{{ app.request.get('_route') == 'medic_list' ? 'active' : (app.request.get('_route')) == 'new_medic' ? 'active' : (app.request.get('_route')) == 'update_medic' ? 'active' : (app.request.get('_route')) == 'medic_show' ? 'active'  : (app.request.get('_route')) == 'medic_vacation' ? 'active'  }}">
                 <a href="{{ path('medic_list') }}">
-                    <i class="nc-icon nc-diamond"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user-md"></i>
+                    </div>
                     <p>Médicos</p> 
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'patient_list' ? 'active' : (app.request.get('_route')) == 'patient_show' ? 'active' : (app.request.get('_route')) == 'update_patient' ? 'active' }}">
                 <a href="{{ path('patient_list') }}">
-                    <i class="nc-icon nc-pin-3"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-user-injured"></i>
+                    </div>
                     <p>Pacientes</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'appointment_list' ? 'active' : (app.request.get('_route')) == 'new_appointment' ? 'active' }} : (app.request.get('_route')) == 'update_appointment' ? 'active' }} ">
                 <a href="{{ path('appointment_list') }}">
-                    <i class="nc-icon nc-bell-55"></i>
+                    <div class="icon-big text-center">
+                       <i class="fas fa-calendar-alt"></i>
+                    </div>
                     <p>Citas</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'user_list' ? 'active': (app.request.get('_route')) == 'new_user' ? 'active' : (app.request.get('_route')) == 'update_user' ? 'active' : (app.request.get('_route')) == 'user_show' ? 'active' }}">
                 <a href="{{ path('user_list') }}">
-                    <i class="nc-icon nc-single-02"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <p>Usuarios</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'schedule_list' ? 'active' : (app.request.get('_route')) == 'new_schedule' ? 'active' : (app.request.get('_route')) == 'update_schedule' ? 'active' }}">
                 <a href="{{ path('schedule_list') }}">
-                    <i class="nc-icon nc-tile-56"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
                     <p>Horario</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'medic_schedule' ? 'active' }}">
                 <a href="{{ path('medic_schedule') }}">
-                    <i class="nc-icon nc-tile-56"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
                     <p>Horario Medico</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'category_list' ? 'active' : (app.request.get('_route')) == 'new_category' ? 'active' : (app.request.get('_route')) == 'category_show' ? 'active' : (app.request.get('_route')) == 'update_category' ? 'active' }}">
                 <a href="{{ path('category_list') }}">
-                    <i class="nc-icon nc-caps-small"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-diagnoses"></i>
+                    </div>
                     <p>Area</p>
                 </a>
             </li>
             <li class="{{ app.request.get('_route') == 'group_list' ? 'active' : (app.request.get('_route')) == 'new_group' ? 'active' : (app.request.get('_route')) == 'update_group' ? 'active' }}">
                 <a href="{{ path('group_list') }}">
-                    <i class="nc-icon nc-caps-small"></i>
+                    <div class="icon-big text-center">
+                        <i class="fas fa-notes-medical"></i>
+                    </div>
                     <p>Grupo Medico</p>
                 </a>
             </li>

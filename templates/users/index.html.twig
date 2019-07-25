@@ -26,7 +26,9 @@
                                         <th>Nombre Completo</th>
                                         <th>Usuario</th>
                                         <th>Correo</th>
-                                        <th>Actiones</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,9 +38,13 @@
                                         <td>{{ user.username }}</td>
                                         <td>{{ user.email }}</td>
                                         <td>
-                                            <a href="/user/{{ user.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                                            <a href="/user/edit/{{ user.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
-                                            <a href="#" class="btn btn-danger delete-article" data-id="{{ user.id }}"><i class="fas fa-trash-alt"></i></a>
+                                            <a data-toggle="tooltip" data-placement="top" title="Ver" href="/user/{{ user.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Editar" href="/user/edit/{{ user.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                        </td>
+                                        <td>
+                                            <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id="{{ user.id }}"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr> 
                                 {% endfor %}

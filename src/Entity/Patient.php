@@ -12,8 +12,9 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     message="Ya se ha registrado este campo."
  * )
  */
-class Patient
+class Patient 
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -49,7 +50,8 @@ class Patient
     private $phone;
 
     /**
-     * @ORM\Column(type="text")
+     * @var UploadedFile
+     * @ORM\Column(type="string")
     */
     
     private $photo;
@@ -65,6 +67,23 @@ class Patient
      */
     
     private $state;
+
+    
+    /**
+     * @ORM\Column(type="string", length=255 ,unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string" ,length=255)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string" ,length=255 ,unique=true)
+     */
+
+     //Relations
 
     /**
      * @ORM\OneToMany(targetEntity="Appoinment", mappedBy="Patient")
@@ -192,6 +211,22 @@ class Patient
 
     public function setState($state) {
        $this->state = $state;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setUsername($username) {
+       $this->username = $username;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setPassword($password) {
+       $this->password = $password;
     }
 
 }

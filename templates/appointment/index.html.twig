@@ -27,9 +27,9 @@
                                             <th>Paciente</th>
                                             <th>Medico</th>
                                             <th>Inicio</th>
-                                            <th>Ver</th>
-                                            <th>Editar</th>
-                                            <th>Eliminar</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -40,10 +40,14 @@
                                             <td>{{ appointment.medic_name }}</td>
                                             <td>{{ appointment.start|date('Y-m-d') }}</td>
                                             <td>
-                                                <a href="/appointment/{{ appointment.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Ver" href="/appointment/{{ appointment.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
                                             </td>
-                                            <td><a href="/appointment/edit/{{ appointment.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a></td>
-                                            <td><a href="#" class="btn btn-danger delete-article" data-id=" {{ appointment.id }}"><i class="fas fa-trash-alt"></i></a></td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Editar" href="/appointment/edit/{{ appointment.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                            </td>
+                                            <td>
+                                                <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id=" {{ appointment.id }}"><i class="fas fa-trash-alt"></i></a>
+                                            </td>
                                         </tr> 
                                         {% endfor %}
                                     </tbody>

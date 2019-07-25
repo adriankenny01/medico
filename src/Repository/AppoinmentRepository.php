@@ -49,12 +49,15 @@ class AppoinmentRepository extends ServiceEntityRepository
     */
 
     public function countAll()
-    {
+    {   
+        //fecha de hoy 
+        $d = new \DateTime;
+
         return $this->createQueryBuilder('a')
              ->Where('a.state = :state')
             ->setParameter('state', 1)
             ->andWhere('a.start = :today')
-            ->setParameter('today', '2019-07-20')
+            ->setParameter('today', $d->format('Y-m-d'))
             ->select('COUNT(a.id) AS total_citas')
             ->getQuery()
             ->getSingleScalarResult()

@@ -12,7 +12,7 @@
                         <td>{{ schedule.daytwo }} - {{ schedule.tohour|date('h:i:a') }}</td>
                        <td>{{ schedule.state }}</td>
                        <td>
-                        <a href="/schedule/{{ schedule.id }}" class="btn btn-dark">Show</a>
+                        <a href="/schedule/{{ schedule.id }}" class="btn btn-primary">Show</a>
                         <a href="/schedule/edit/{{ schedule.id }}" class="btn btn-light">Edit</a>
                         <a href="#" class="btn btn-danger delete-article" data-id="{{ schedule.id }}">Delete</a>
                        </td>

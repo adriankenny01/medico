@@ -19,7 +19,13 @@
                             {% if patient %}
 
                                 <ul class="list-group">
-                                    <li class="list-group-item"><strong> Foto:  </strong>{{ patient.photo ? patient.photo : "No hay foto" }}</li>
+                                    <li class="list-group-item"><strong> Foto:  </strong> 
+                                        {% if patient.photo %}
+                                            <img src="{{ asset('uploads/patient/' ~ patient.photo )  }} " alt="" width="74" height="74">
+                                        {% else %}
+                                            Foto no disponible.
+                                        {% endif %}
+                                    </li>
                                     <li class="list-group-item"><strong> Nombre Completo:  </strong>{{ patient.fullname}}</li>
                                     <li class="list-group-item"><strong> Email:  </strong>{{ patient.email}}</li>
                                     <li class="list-group-item"><strong> Cedula:  </strong>{{ patient.cardid}}</li>

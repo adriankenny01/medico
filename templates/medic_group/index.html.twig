@@ -32,9 +32,9 @@
                                         <tr>
                                             <td>{{ group1.name }}</td>
                                             <td>
-                                                <a href="/group/{{ group1.id }}" class="btn btn-dark"><i class="fas fa-eye"></i></a>
-                                                <a href="/group/edit/{{ group1.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
-                                                <a href="#" class="btn btn-danger delete-article" data-id="{{ group1.id }}"><i class="fas fa-trash-alt"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Ver" href="/group/{{ group1.id }}" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Editar" href="/group/edit/{{ group1.id }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                                                <a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#" class="btn btn-danger delete-article" data-id="{{ group1.id }}"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr> 
                                         {% endfor %}
