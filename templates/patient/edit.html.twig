@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." class="avatar border-gray" src="../assets/img/mike.jpg">
+                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/patient/') ~ photo }} ">
                                 <h5 class="title">Chet Faker</h5>
                             </a>
                             <p class="description">
@@ -72,6 +72,14 @@
                     </div>
                     <div class="card-body">
                         {{ form_start(form) }}
+                        
+                        <div class="row">
+                            <div class="col-md-12 p-2">
+                                <div class="form-group">
+                                    {{ form_row(form.photo) }}
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-12 p-2">

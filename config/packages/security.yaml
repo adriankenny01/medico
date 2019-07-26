@@ -2,11 +2,17 @@ security:
     encoders:
         App\Entity\User:
             algorithm: bcrypt
+        App\Entity\Patient:
+            algorithm: bcrypt
     providers:
         # in_memory: { memory: ~ }
         my_provider:
             entity:
                 class: 'App\Entity\User'
+                property: username
+        my_patient_provider:
+            entity:
+                class: 'App\Entity\Patient'
                 property: username
     firewalls:
         dev:
@@ -47,6 +53,7 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/user/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/patient/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }
 
  

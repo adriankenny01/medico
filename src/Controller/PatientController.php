@@ -47,16 +47,20 @@ class PatientController extends Controller
         $patient = new Patient();
 
         $form = $this->createFormBuilder($patient)
-            ->add('full_name', TextType::class, array('attr' =>
-            array('class' => 'form-control'), 'label' => 'Nombre Completo'))
+            ->add('full_name', TextType::class, array('label' => false,'attr' =>
+                array(
+                    'class' => 'form-control', 
+                    'placeholder' => 'Nombre Completo', 
+                    )
+                ))
             ->add('email', EmailType::class, array('attr' =>
-            array('class' => 'form-control'), 'label' => 'Email'))
+            array( 'placeholder' => 'Correo' , 'class' => 'form-control'), 'label' => false))
             ->add('card_id', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Cedula'))
+            array('placeholder' => 'Cédula', 'class' => 'form-control'),'label' => false))
             ->add('address', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Direccion'))
+            array('placeholder' => 'Dirección','class' => 'form-control'),'label' => false))
             ->add('phone', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Telefono'))
+            array('placeholder' => 'Télefono', 'class' => 'form-control'),'label' => false))
             ->add('photo', FileType::class, [
                 'label' => 'Foto de perfil',
 
@@ -80,8 +84,16 @@ class PatientController extends Controller
                     ])
                 ],
             ])
-            ->add('social_security', IntegerType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Seguridad Social'))
+            ->add('social_security', IntegerType::class, 
+                array(
+                    'attr' =>
+                        array(
+                            'class' => 'form-control',
+                            'placeholder' => 'Seguridad Social'
+                        ),
+                    'label' => false
+                    )
+                )
             
             ->add('save', SubmitType::class, array(
                 'label' => 'Crear', 
@@ -157,6 +169,29 @@ class PatientController extends Controller
             array('class' => 'form-control'),'label' => 'Telefono'))
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
+            ->add('photo', FileType::class, [
+                'label' => 'Foto de perfil',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // everytime you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Por favor sube una imagen valida.',
+                    ])
+                ],
+            ])
 
             ->add('save', SubmitType::class, array(
                 'label' => 'Actualizar', 
@@ -167,6 +202,30 @@ class PatientController extends Controller
             $form->handleRequest($request);
 
             if($form->isSubmitted() && $form->isValid()){
+                $patientPhoto = $form['photo']->getData();
+
+                // this condition is needed because the 'brochure' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($patientPhoto) {
+                    $originalFilename = pathinfo($patientPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$patientPhoto->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $patientPhoto->move(
+                            $this->getParameter('patient_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $patient->setPhoto($newFilename);
+                }
 
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->flush();
@@ -175,8 +234,9 @@ class PatientController extends Controller
             }
 
             return $this->render('patient/edit.html.twig', array(
-                'form' => $form->createView(),
-                'full_name' => $patient->getFullName()
+                'form'      => $form->createView(),
+                'full_name' => $patient->getFullName(),
+                'photo'     => $patient->getPhoto()
             ));
     }
 
