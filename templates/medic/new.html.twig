@@ -20,22 +20,22 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." class="avatar border-gray" src="../assets/img/mike.jpg">
+                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/medic/stethoscope.png')  }}">
                                 <h5 class="title">Chet Faker</h5>
                             </a>
                             <p class="description">
                                 @chetfaker
                             </p>
                         </div>
-                        <p class="description text-center">
+                        {# <p class="description text-center">
                             "I like the way you work it
                             <br>
                             No diggity
                             <br>
                             I wanna bag it up"
-                        </p>
+                        </p> #}
                     </div>
-                    <div class="card-footer">
+                    {# <div class="card-footer">
                         <hr>
                         <div class="button-container">
                             <div class="row">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> #}
                 </div>
 
                 <div class="card"></div>
@@ -71,7 +71,7 @@
                         <h5 class="card-title">Nuevo Medico</h5>
                     </div>
                     <div class="card-body">
-                        {{ form_start(form) }}
+                        {{ form_start(form ,{attr: {novalidate: 'novalidate'}}) }}
                         <div class="row">
                             <div class="col-md-6 p-2">
                                 <div class="form-group">

@@ -5690,9 +5690,10 @@ License - nucleoapp.com/license/
 }
 
 .card-user .avatar {
+  background: #fff;
   width: 124px;
   height: 124px;
-  border: 1px solid #FFFFFF;
+  border: 2px solid #cecece;
   position: relative;
 }
 

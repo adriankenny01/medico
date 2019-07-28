@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block title %}
-    Editar Medico
+    Editar Médico
 {% endblock %}
 
 {% block body %}
@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/medic/') ~ image }}">
+                                <img alt="..." class="avatar border-gray" src="{{  (image) ? asset('uploads/medic/') ~ image : asset('uploads/medic/stethoscope.png')  }}">
                                 <h5 class="title">{{ full_name }}</h5>
                             </a>
                             <p class="description">
