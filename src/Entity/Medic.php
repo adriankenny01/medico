@@ -140,10 +140,10 @@ class Medic
     
     private $state;
 
-    /**
-     * @ORM\Column(type="string" ,length=100)
-     */
-    
+   /**
+     * @var UploadedFile
+     * @ORM\Column(type="string")
+    */
     private $image;
 
 

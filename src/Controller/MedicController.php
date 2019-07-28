@@ -12,6 +12,8 @@ use App\Repository\MedicRepository;
 
 use App\Classes\Helper;
 
+use Symfony\Component\Validator\Constraints\File;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,6 +24,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -113,6 +116,29 @@ class MedicController extends Controller
                 },
                 'label' => 'Horario'
             ])
+
+            ->add('image', FileType::class, [
+                'label' => 'Foto de perfil',
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // everytime you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Por favor sube una imagen valida.',
+                    ])
+                ],
+            ])
             
             ->add('save', SubmitType::class, array(
                 'label' => 'Crear', 
@@ -124,6 +150,31 @@ class MedicController extends Controller
             
             if($form->isSubmitted() && $form->isValid()){
                 $medic = $form->getData();
+
+                $medicPhoto = $form['image']->getData();
+
+                // this condition is needed because the 'brochure' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($medicPhoto) {
+                    $originalFilename = pathinfo($medicPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$medicPhoto->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $medicPhoto->move(
+                            $this->getParameter('medic_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $medic->setImage($newFilename);
+                }
                 
                 $medic->setState(1);
 
@@ -168,8 +219,29 @@ class MedicController extends Controller
             ->add('social_security', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
             ->add('number_of_collegiate', TextType::class, array('attr' =>
-            array('class' => 'form-control'),'label' => 'Numero de colegiado'))
-            
+            array('class' => 'form-control'),'label' => 'Execuatur'))
+            ->add('image', FileType::class, [
+                'label' => false,
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // everytime you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Por favor sube una imagen valida.',
+                    ])
+                ],
+            ])
             ->add('MedicGroup', EntityType::class, [
                 'class' => MedicGroup::class,
                 "attr"=>array('class' => 'form-control'),
@@ -189,6 +261,7 @@ class MedicController extends Controller
             ->add('date_end', DateType::class, array(
                 'attr' => array(
                     'class' => 'form-control',
+                    'required'  => false
                 ),
                 'label' => 'Fecha Fin',
                 'widget' => 'single_text'
@@ -215,6 +288,8 @@ class MedicController extends Controller
                 'label' => 'Horario'
             ])
 
+          
+
             ->add('save', SubmitType::class, array(
                 'label' => 'Actualizar', 
                 'attr'  => array('class' => 'btn btn-primary mt-3')
@@ -224,7 +299,30 @@ class MedicController extends Controller
             $form->handleRequest($request);
 
             if($form->isSubmitted() && $form->isValid()){
-               
+                $medicPhoto = $form['image']->getData();
+
+                // this condition is needed because the 'brochure' field is not required
+                // so the PDF file must be processed only when a file is uploaded
+                if ($medicPhoto) {
+                    $originalFilename = pathinfo($medicPhoto->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename.'-'.uniqid().'.'.$medicPhoto->guessExtension();
+
+                    // Move the file to the directory where brochures are stored
+                    try {
+                        $medicPhoto->move(
+                            $this->getParameter('medic_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // ... handle exception if something happens during file upload
+                    }
+
+                    // updates the 'brochureFilename' property to store the PDF file name
+                    // instead of its contents
+                    $medic->setImage($newFilename);
+                }
                 $medic->setState(1);
 
                 $entityManager = $this->getDoctrine()->getManager();
@@ -234,7 +332,10 @@ class MedicController extends Controller
             }
 
             return $this->render('medic/edit.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'image'     => $medic->getImage(),
+                'full_name'    => $medic->getName(),
+                'category'  => $medic->getCategory()->getArea()
             ));
     }
 

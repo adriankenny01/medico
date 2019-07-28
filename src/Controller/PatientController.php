@@ -10,12 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-// use Symfony\Component\HttpFoundation\File\Exception\FileException;
-// use Symfony\Component\HttpFoundation\File\UploadedFile;
-
 use Symfony\Component\Validator\Constraints\File;
-// use Symfony\Component\HttpFoundation\File\File;
-
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
