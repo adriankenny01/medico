@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/medic/stethoscope.png')  }}">
+                                <img alt="..." id="perfil" class="avatar border-gray" src="#">
                                 <h5 class="title">Chet Faker</h5>
                             </a>
                             <p class="description">
@@ -210,9 +210,9 @@
 
 <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/readImage.js') }}" type="text/javascript"></script>
 
 <script>
-
     document.getElementById("form_MedicGroup").addEventListener("change", myFunction);   
     
     document.getElementsByName("form").onload = function() {myFunction()};
