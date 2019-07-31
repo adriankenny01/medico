@@ -66,7 +66,7 @@
                     <p>Usuarios</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'schedule_list' ? 'active' : (app.request.get('_route')) == 'new_schedule' ? 'active' : (app.request.get('_route')) == 'update_schedule' ? 'active' }}">
+            <li class="{{ app.request.get('_route') == 'schedule_list' ? 'active' : (app.request.get('_route')) == 'new_schedule' ? 'active' : (app.request.get('_route')) == 'update_schedule' ? 'active' : (app.request.get('_route')) == 'schedule_show' ? 'active' }}">
                 <a href="{{ path('schedule_list') }}">
                     <div class="icon-big text-center">
                         <i class="fas fa-calendar-alt"></i>

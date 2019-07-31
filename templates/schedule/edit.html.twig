@@ -5,13 +5,20 @@
 {% block body %} 
     
     <div class="content">
+      <div class="row">
+          <div class="col-lg-12">
+              <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                  <li class="breadcrumb-item"><a href="/schedule">Horario</a></li>
+                  <li class="breadcrumb-item active">Editar</li>
+              </ol>
+          </div>
+      </div>
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title"> Editar Horario </h4>
-                <p class="card-category"> Here is a subtitle for this table</p>
-                <a href="/schedule/new/" class="btn btn-primary float-right">Nuevo</a>
               </div>
                 <div class="p-3">
                     {{ form_start(form) }}

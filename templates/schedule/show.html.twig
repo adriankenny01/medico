@@ -8,29 +8,42 @@
 
     <div class="content">
         <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/schedule">Citas</a></li>
+                    <li class="breadcrumb-item active">Mostrar</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">
                             Horarios
                         </h4>
-                        <p class="card-category">
-                            Here is a subtitle for this table</p>
+                        {# <p class="card-category">
+                            Here is a subtitle for this table
+                        </p> #}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             {% if schedule %}
 
-                                <h1>{{ schedule.dayone}}
+                                <h4>{{ schedule.dayone}}
                                     -
-                                    {{ schedule.daytwo }}</h1>
-                                <h2>{{ schedule.fromhourdayone|date('h:i:a') }}
+                                    {{ schedule.daytwo }}
+                                </h4>
+                                <h5>{{ schedule.fromhourdayone|date('h:i:a') }}
                                     -
-                                    {{ schedule.tohourdayone|date('h:i:a') }}</h2>
-                                <h2>{{ schedule.fromhourdaytwo|date('h:i:a') }}
+                                    {{ schedule.tohourdayone|date('h:i:a') }}
+                                </h5>
+                                <h5>{{ schedule.fromhourdaytwo|date('h:i:a') }}
                                     -
-                                    {{ schedule.tohourdaytwo|date('h:i:a') }}</h2>
-
+                                    {{ schedule.tohourdaytwo|date('h:i:a') }}
+                                </h5>
                             {% else %}
                                 <div class="alert alert-dismissible alert-warning">
                                     <button class="close" data-dismiss="alert" type="button">&times;</button>
