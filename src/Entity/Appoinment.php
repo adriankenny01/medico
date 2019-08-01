@@ -95,12 +95,12 @@ class Appoinment
         $this->medic_id = $medic_id;
     }
 
-    public function get_PatientId($patient_id)
+    public function set_PatientId($patient_id)
     {
         $this->patient_id = $patient_id;
     }
 
-    public function set_PatientId()
+    public function get_PatientId()
     {
         return $this->patient_id;
     }

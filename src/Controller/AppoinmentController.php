@@ -152,6 +152,9 @@ class AppoinmentController extends Controller
 
         $appointment = $this->getDoctrine()->getRepository(Appoinment::class)->find($id);
 
+        //get image id from patient repository
+        $patientPhoto = $this->getDoctrine()->getRepository(Patient::class)->getPhoto($appointment->get_PatientId());
+
             $form = $this->createFormBuilder($appointment)
             ->add('title', TextType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Titulo'))
@@ -206,7 +209,8 @@ class AppoinmentController extends Controller
             }
 
             return $this->render('appointment/edit.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'photo' => $patientPhoto
             ));
     }
 

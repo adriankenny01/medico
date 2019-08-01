@@ -50,7 +50,7 @@
                     <p>Pacientes</p>
                 </a>
             </li>
-            <li class="{{ app.request.get('_route') == 'appointment_list' ? 'active' : (app.request.get('_route')) == 'new_appointment' ? 'active' }} : (app.request.get('_route')) == 'update_appointment' ? 'active' }} ">
+            <li class="{{ app.request.get('_route') == 'appointment_list' ? 'active' : (app.request.get('_route')) == 'new_appointment' ? 'active' : (app.request.get('_route')) == 'update_appointment' ? 'active' }} ">
                 <a href="{{ path('appointment_list') }}">
                     <div class="icon-big text-center">
                        <i class="fas fa-calendar-alt"></i>

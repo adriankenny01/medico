@@ -125,19 +125,19 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header ">
-                        <h5 class="card-title">Users Behavior</h5>
-                        <p class="card-category">24 Hours performance</p>
+                        <h5 class="card-title">Calendario de citas</h5>
+                        <p class="card-category">{{ "now"|date("d/F/Y") }}</p>
                     </div>
                     <div class="card-body ">
                         {# <canvas height="100" id="chartHours" width="400"></canvas> #}
                         <div id="calendar"></div>
                     </div>
                     <div class="card-footer ">
-                        <hr>
+                        {# <hr>
                         <div class="stats">
                             <i class="fa fa-history"></i>
                             Updated 3 minutes ago
-                        </div>
+                        </div> #}
                     </div>
                 </div>
             </div>

@@ -59,4 +59,16 @@ class PatientRepository extends ServiceEntityRepository
 
         ;
     }
+
+    public function getPhoto($id){
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.state = :state')
+            ->setParameter('state', 1)
+            ->andWhere('p.id = :id')
+            ->setParameter('id', $id)
+            ->select('p.photo AS photo')
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
