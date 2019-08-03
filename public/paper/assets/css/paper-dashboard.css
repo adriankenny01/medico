@@ -3806,7 +3806,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 
 img {
   max-width: 100%;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
 .img-raised {

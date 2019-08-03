@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." class="avatar border-gray" src="{{  asset('uploads/patient/') ~ app.user.photo }} ">
+                                <img alt="..." class="avatar border-gray" src="{{  (app.user.photo) ? asset('uploads/patient/') ~ app.user.photo : asset('paper/assets/img/logo-small.png') }} ">
                                 <h5 class="title">{{ app.user.name }}</h5>
                             </a>
                         </div>
