@@ -6,7 +6,7 @@
     <div class="logo">
         <a class="simple-text logo-mini" href="http://www.creative-tim.com">
             <div class="logo-image-small">
-                <img src="{{ asset('paper/assets/img/logo-small.png') }}">
+                <img src="{{ (app.user.photo) ? '/uploads/patient/' ~ app.user.photo : asset('paper/assets/img/logo-small.png') }}">
             </div>
         </a>
         <a class="simple-text logo-normal" href="http://www.creative-tim.com">

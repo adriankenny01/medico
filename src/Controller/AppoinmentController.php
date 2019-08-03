@@ -210,7 +210,8 @@ class AppoinmentController extends Controller
 
             return $this->render('appointment/edit.html.twig', array(
                 'form' => $form->createView(),
-                'photo' => $patientPhoto
+                'photo' => $patientPhoto,
+                'full_name' =>  $appointment->getPatient()->getFullName()
             ));
     }
 

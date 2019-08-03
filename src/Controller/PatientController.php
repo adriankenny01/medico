@@ -13,14 +13,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Validator\Constraints\File;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+
 class PatientController extends Controller
 {
+
     /**
      * @Route("/patient", name="patient_list")
      */
@@ -54,6 +57,13 @@ class PatientController extends Controller
             array('placeholder' => 'Cédula', 'class' => 'form-control'),'label' => false))
             ->add('address', TextType::class, array('attr' =>
             array('placeholder' => 'Dirección','class' => 'form-control'),'label' => false))
+            
+            ->add('username', TextType::class, array('attr' =>
+            array('placeholder' => 'Nombre de usuario','class' => 'form-control'),'label' => false))
+            
+            ->add('password', PasswordType::class, array('attr' =>
+            array('placeholder' => 'Contrasena','class' => 'form-control'),'label' => false))
+                    
             ->add('phone', TextType::class, array('attr' =>
             array('placeholder' => 'Télefono', 'class' => 'form-control'),'label' => false))
             ->add('photo', FileType::class, [
@@ -125,6 +135,10 @@ class PatientController extends Controller
                     // instead of its contents
                     $patient->setPhoto($newFilename);
                 }
+
+                $patient->setPassword(
+                    password_hash( $patient->getPassword() , PASSWORD_BCRYPT ) 
+                );
 
                 $patient->setState(1);
 

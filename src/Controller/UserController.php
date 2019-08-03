@@ -38,6 +38,17 @@ class UserController extends Controller{
     }
 
     /**
+     * @Route("/profile/", name="profile")
+     * 
+     */
+    public function profile(){
+
+        return $this->render('users/profile.html.twig' , [
+
+        ]);
+    }
+
+    /**
      * 
      * @Route("/user/new", name="new_user")
      * Method({"GET", "POST"})

@@ -20,8 +20,6 @@
                         <h4 class="card-title">
                             {{ 'Área : ' ~ category.area }}
                         </h4>
-                        <p class="card-category">
-                            Here is a subtitle for this table</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,7 +29,7 @@
                                   <li class="list-group-item"><strong>Área : </strong>{{ category.area }}</li>
                                   <li class="list-group-item">
                                     {# <img class="" src="" alt="{{ 'Imagen de ' ~ category.area }} "> #}
-                                    <i class="fa-b {{ category.icon }}" ></i>
+                                    <i class="fa-b {{ (category.icon) }}"></i>
                                   </li>
                                 </ul>
                                 <a class="btn float-right" href="/medic/category">Volver</a>  

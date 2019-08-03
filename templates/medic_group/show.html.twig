@@ -11,8 +11,6 @@
                         <h4 class="card-title">
                             {{ 'Grupo Medico : ' ~ group.name }}
                         </h4>
-                        <p class="card-category">
-                            Here is a subtitle for this table</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -20,12 +18,9 @@
 
                                 <ul class="list-group">
                                   <li class="list-group-item"><strong>Grupo Medico : </strong>{{ group.name }}</li>
-                                  <li class="list-group-item">
-                                    {# <img class="" src="" alt="{{ 'Imagen de ' ~ category.area }} "> #}
-                                    {# <i class="fa-b {{ category.icon }}" ></i> #}
-                                  </li>
+                                  <li class="list-group-item"></li>
                                 </ul>
-                                <a class="btn float-right" href="/medic/category">Volver</a>  
+                                <a class="btn float-right" href="/group">Volver</a>  
 
                             {% else %}
                                 <div class="alert alert-dismissible alert-warning">

@@ -47,10 +47,27 @@ class User implements UserInterface, \Serializable
      */
     private $email;
 
-      /**
+    /**
      * @ORM\Column(type="integer", length=1)
-     */
+    */
     private $state;
+
+    /**
+     * @ORM\Column(type="string" ,length=255 ,unique=true)
+     */
+    private $type;
+
+       /**
+     * @var UploadedFile
+     * @ORM\Column(type="string")
+    */
+    private $photo;
+
+    /**
+     * @ORM\Column(type="integer", length=1)
+    */
+    private $patient_id;
+
 
     // Getters & Setters
     public function getId(): ?int
@@ -96,6 +113,34 @@ class User implements UserInterface, \Serializable
 
     public function setState($state) {
        $this->state = $state;
+    }
+
+    public function getType() {
+        return $this->type;
+    }
+
+    public function setType($type) {
+       $this->type = $type;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+    }
+
+    public function getPatientId()
+    {
+        return $this->patient_id;
+    }
+
+    public function setPatientId($patient_id)
+    {
+        $this->patient_id = $patient_id;
     }
 
     public function getRoles(){
