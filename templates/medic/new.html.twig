@@ -17,15 +17,12 @@
                     <div class="image">
                         <img alt="..." src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="min-height: 0">
                         <div class="author">
                             <a href="#">
-                                <img alt="..." id="perfil" class="avatar border-gray" src="#">
-                                <h5 class="title">Chet Faker</h5>
+                                <img alt="foto del médico   " id="perfil" class="avatar border-gray" src="{{ asset('paper/assets/img/logo-small.png') }}">
+                                <h5 class="title" id="full_name">Nombre del médico</h5>
                             </a>
-                            <p class="description">
-                                @chetfaker
-                            </p>
                         </div>
                         {# <p class="description text-center">
                             "I like the way you work it
@@ -213,6 +210,11 @@
 <script src="{{ asset('js/readImage.js') }}" type="text/javascript"></script>
 
 <script>
+
+    $("#form_name").keyup(function(){
+        $('#full_name').text($('#form_name').val());
+    });
+
     document.getElementById("form_MedicGroup").addEventListener("change", myFunction);   
     
     document.getElementsByName("form").onload = function() {myFunction()};
@@ -221,7 +223,7 @@
             
     function myFunction() {
         var x = document.getElementById("form_MedicGroup").value;
-        if(x === '9'){
+        if(x === '10'){
             document.getElementById("form_date_end").style.display = 'block';
             document.getElementById("form_date_end").previousSibling.style.display = 'block';
         }else{

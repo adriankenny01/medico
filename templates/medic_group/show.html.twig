@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ 'Grupo Medico : ' ~ group.name }} {% endblock %}
+{% block title %} {{ 'Grupo Meéco : ' ~ group.name }} {% endblock %}
 
 {% block body %} 
 <div class="content">
@@ -17,8 +17,7 @@
                             {% if group %}
 
                                 <ul class="list-group">
-                                  <li class="list-group-item"><strong>Grupo Medico : </strong>{{ group.name }}</li>
-                                  <li class="list-group-item"></li>
+                                  <li class="list-group-item"><strong>Grupo Médico : </strong>{{ group.name }}</li>
                                 </ul>
                                 <a class="btn float-right" href="/group">Volver</a>  
 
@@ -26,7 +25,7 @@
                                 <div class="alert alert-dismissible alert-warning">
                                     <button class="close" data-dismiss="alert" type="button">&times;</button>
                                     <h4 class="alert-heading">Aviso</h4>
-                                    <p class="mb-0">No Existen Áreas actualmente.</p>
+                                    <p class="mb-0">No Existen grupos médicos actualmente.</p>
                                 </div>
                                 <a class="btn btn-primary float-right" href="/group/new">Nuevo</a>
                             {% endif %}

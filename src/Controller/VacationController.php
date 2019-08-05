@@ -17,6 +17,8 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
+use App\Entity\Medic;
+
 class VacationController extends Controller
 {
     /**
@@ -36,7 +38,7 @@ class VacationController extends Controller
     public function assign(Request $request, $m_id, $e_id){
         $vacation = new Vacation();
 
-        // $vacation = $this->getDoctrine()->getRepository(Vacation::class)->find($id);
+        $medic = $this->getDoctrine()->getRepository(Medic::class)->showMedic($m_id);
 
         $form = $this->createFormBuilder($vacation)
             ->add('type', ChoiceType::class, [
@@ -85,13 +87,19 @@ class VacationController extends Controller
 
                 if($m_id){
                     return $this->redirectToRoute('medic_list');
-                }else{
-                    return $this->redirectToRoute('employee_list');
                 }
+                // else{
+                //     return $this->redirectToRoute('employee_list');
+                // }
             }
 
+            $medic = $medic;
+            
+
             return $this->render('vacation/new.html.twig', array(
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'full_name'  => $medic[0]['name'] . ' ' . $medic[0]['last_name'],
+                'image'     => $medic[0]['image']
             ));
     }
 

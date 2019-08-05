@@ -5,6 +5,16 @@
 {% block body %} 
 <div class="content">
         <div class="row">
+            <div class="col-lg-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="/medic">Médico</a></li>
+                    <li class="breadcrumb-item active">Mostrar</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -12,7 +22,8 @@
                             {{ medic[0].name}} {{ medic[0].last_name }}
                         </h4>
                         <p class="card-category">
-                            Here is a subtitle for this table</p>
+                            Especialidad en <i>{{ medic[0].area_medica }}</i> , Execuatur : {{ medic[0].number_of_collegiate }}  
+                        </p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,7 +42,7 @@
                                 <li class="list-group-item"><strong>Fecha Fin: </strong>{{ medic[0].date_end|date('Y-m-d')  }}</li>
                                 <li class="list-group-item"><strong>Categoria: </strong>{{ medic[0].area_medica }}</li>
                                 </ul>
-                                <a class="btn float-right" href="/medic/new">Volver</a>  
+                                <a class="btn float-right" href="/medic">Volver</a>  
 
                             {% else %}
                                 <div class="alert alert-dismissible alert-warning">
@@ -39,7 +50,7 @@
                                     <h4 class="alert-heading">Aviso</h4>
                                     <p class="mb-0">No Existe este médico actualmente.</p>
                                 </div>
-                                <a class="btn btn-primary float-right" href="/medic/category">Nuevo</a>
+                                <a class="btn btn-primary float-right" href="/medic/new">Nuevo</a>
                             {% endif %}
                         </div>
                     </div>

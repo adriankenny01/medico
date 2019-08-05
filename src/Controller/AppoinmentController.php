@@ -112,7 +112,8 @@ class AppoinmentController extends Controller
                 $PreviousPatientAppoinment = $em->getRepository('App:Appoinment')->ValidateAppoinment($appointment->getPatient()->getId(), $appointment->getStart());
                 
                 //validate qty of patient by that day
-                if( $LimitPatientAppoinmentPerDay[0]['cantidad']  > 10){
+                if( $LimitPatientAppoinmentPerDay[0]['cantidad']  >= 1){
+
                     return $this->render('appointment/new.html.twig', array(
                         'form' => $form->createView(),
                         'cantidad_citas'    => 'Hemos llegado al límite de pacientes por el día de hoy.',

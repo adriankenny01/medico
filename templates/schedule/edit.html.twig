@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Editar horario {% endblock %}
+{% block title %} Editar Horario Medico {% endblock %}
 
 {% block body %} 
-    
-    <div class="content">
-      <div class="row">
+
+
+<div class="content">
+    <div class="row">
           <div class="col-lg-12">
               <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/">Inicio</a></li>
@@ -15,18 +16,71 @@
           </div>
       </div>
         <div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Editar Horario </h4>
+          <div class="col-md-4">
+            <div class="card card-user">
+              <div class="image">
+                <img src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}" alt="...">
               </div>
-                <div class="p-3">
-                    {{ form_start(form) }}
-                    {{ form_widget(form) }}
-                    {{ form_end(form) }}
+              
+              
+            </div>
+            
+          </div>
+          <div class="col-md-8">
+            <div class="card card-user">
+              <div class="card-header">
+                <h5 class="card-title">Editar Horario</h5>
+              </div>
+              <div class="card-body">
+                {{ form_start(form) }}
+                {# <form> #}
+                  <div class="row">
+                    <div class="col-md-2 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.day_one) }}
+                      </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.from_hour_day_one) }}
+                      </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.to_hour_day_one) }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.day_two) }}
+                      </div>
+                    </div>
+                    <div class="col-md-5 p-2">
+                      <div class="form-group">
+                        {{ form_row(form.from_hour_day_two) }}
+                      </div>
+                    </div>
+                  
+                <div class="col-md-5 p-2">
+                    <div class="form-group">
+                        {{ form_row(form.to_hour_day_two) }}
+                    </div>
                 </div>
+                 </div>
+                 
+                  <div class="row">
+                    <div class="update ml-auto mr-auto">
+                      <button type="submit" class="btn btn-primary btn-round">Guardar</button>
+                    </div>
+                  </div>
+                {# </form> #}
+                {{ form_end(form) }}
+              </div>
             </div>
           </div>
         </div>
       </div>
+
 {% endblock %} 

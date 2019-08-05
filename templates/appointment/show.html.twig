@@ -21,7 +21,9 @@
                             {{ 'Cita : ' ~ appointment.title }}
                         </h4>
                         <p class="card-category">
-                            Here is a subtitle for this table</p>
+                           {{ 'Paciente :' ~ appointment.patient.getFullName() }}
+                        </p>
+                        <img class="img-thumbnail float-right" width="125px" src ="{{ (appointment.patient.getPhoto()) ?  '/uploads/patient/' ~ appointment.patient.getPhoto() : asset('paper/assets/img/logo-small.png') }}" alt="Foto de perfil">
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,8 +33,10 @@
                                   <li class="list-group-item"><strong>Título : </strong>{{ appointment.title }}</li>
                                   <li class="list-group-item"><strong>Simtomas : </strong>{{ appointment.symptoms }}</li>
                                   <li class="list-group-item"><strong>Medicamento : </strong>{{ appointment.medicaments }}</li>
-                                  <li class="list-group-item"><strong>Enfermeda : </strong>{{ appointment.sick }}</li>
-                                  <li class="list-group-item"><strong>Foto : foto de paciente</li>
+                                  <li class="list-group-item"><strong>Enfermedad : </strong>{{ appointment.sick }}</li>
+                                  <li class="list-group-item"><strong>Doctor : </strong>{{ appointment.medic.getFullName() }}</li>
+                                  <li class="list-group-item"><strong>Fecha de cita : </strong>{{ appointment.start|date('d/F/Y') }}</li>
+                                  <li class="list-group-item"><strong>Enfermedad : </strong>{{ appointment.sick }}</li>
                                 </ul>
                                 <a class="btn float-right" href="/appointment">Volver</a>  
 

@@ -17,47 +17,15 @@
                     <div class="image">
                         <img alt="..." src="{{ asset('paper/assets/img/damir-bosnjak.jpg') }}">
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="min-height: 0">
                         <div class="author">
                             <a href="#">
                                 <img alt="..." id="perfil" class="avatar border-gray" src="{{  (image) ? asset('uploads/medic/') ~ image : asset('uploads/medic/stethoscope.png')  }}">
-                                <h5 class="title">{{ full_name }}</h5>
+                                <h5 class="title" id="full_name">{{ full_name }}</h5>
                             </a>
                             <p class="description">
                                 {{ category }}
                             </p>
-                        </div>
-                        <p class="description text-center">
-                            "I like the way you work it
-                            <br>
-                            No diggity
-                            <br>
-                            I wanna bag it up"
-                        </p>
-                    </div>
-                    <div class="card-footer">
-                        <hr>
-                        <div class="button-container">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-6 col-6 ml-auto">
-                                    <h5>12
-                                        <br>
-                                        <small>Pacientes</small>
-                                    </h5>
-                                </div>
-                                <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-                                    <h5>2GB
-                                        <br>
-                                        <small>Citas</small>
-                                    </h5>
-                                </div>
-                                <div class="col-lg-3 mr-auto">
-                                    <h5>24,6$
-                                        <br>
-                                        <small>Tipo</small>
-                                    </h5>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -71,7 +39,9 @@
                         <h5 class="card-title">Editar Medico</h5>
                     </div>
                     <div class="card-body">
-                        {{ form_start(form) }}
+                        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                        
                         <div class="row">
                             <div class="col-md-6 p-2">
                                 <div class="form-group">
@@ -214,6 +184,10 @@
 
 <script>
 
+    $("#form_name").keyup(function(){
+        $('#full_name').text($('#form_name').val());
+    });
+
     document.getElementById("form_MedicGroup").addEventListener("change", myFunction);   
     
     document.getElementsByName("form").onload = function() {myFunction()};
@@ -222,7 +196,7 @@
             
     function myFunction() {
         var x = document.getElementById("form_MedicGroup").value;
-        if(x === '9'){
+        if(x === '10'){
             document.getElementById("form_date_end").style.display = 'block';
             document.getElementById("form_date_end").previousSibling.style.display = 'block';
         }else{

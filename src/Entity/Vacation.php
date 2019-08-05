@@ -170,21 +170,21 @@ class Vacation
     //     return $this;
     // }
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity="Medic", inversedBy="vacation")
-    //  * @ORM\JoinColumn(name="medic_id", referencedColumnName="id")
-    //  */
-    // private $medic;
+    /**
+     * @ORM\ManyToOne(targetEntity="Medic", inversedBy="vacation")
+     * @ORM\JoinColumn(name="medic_id", referencedColumnName="id")
+     */
+    private $medic;
 
 
-    // public function getMedic()
-    // {
-    //     return $this->medic;
-    // }
+    public function getMedic()
+    {
+        return $this->medic;
+    }
 
-    // public function setMedic($medic)
-    // {
-    //     $this->medic = $medic;
-    //     return $this;
-    // }
+    public function setMedic($medic)
+    {
+        $this->medic = $medic;
+        return $this;
+    }
 }
