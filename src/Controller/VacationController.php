@@ -81,7 +81,7 @@ class VacationController extends Controller
                 $vacation = $form->getData();
                 
                 $entityManager = $this->getDoctrine()->getManager();
-                
+                $vacation->setMedicId($m_id);
                 $entityManager->persist($vacation);
                 $entityManager->flush();
 

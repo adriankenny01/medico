@@ -68,6 +68,11 @@ class User implements UserInterface, \Serializable
     */
     private $patient_id;
 
+    /**
+     * @ORM\Column(type="string" ,length=255 ,unique=true)
+     */
+    private $role;
+
 
     // Getters & Setters
     public function getId(): ?int
@@ -141,6 +146,16 @@ class User implements UserInterface, \Serializable
     public function setPatientId($patient_id)
     {
         $this->patient_id = $patient_id;
+    }
+
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    public function setRole($role)
+    {
+        $this->role = $role;
     }
 
     public function getRoles(){

@@ -55,6 +55,6 @@ security:
         - { path: ^/user/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/patient/new, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }
+        - { path: ^/patient, roles: ROLE_PATIENT }
 
  
-
