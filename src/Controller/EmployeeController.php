@@ -61,6 +61,7 @@ class EmployeeController extends Controller
             
             ->add('social_security', IntegerType::class, array('attr' =>
             array('class' => 'form-control'),'label' => 'Seguridad Social'))
+            
             ->add('tipo_empleado', ChoiceType::class, [
                 'choices' => ['Auxiliares de enfermería' => 'Auxiliares de enfermería', 
                 'Celadores' => 'Celadores',
